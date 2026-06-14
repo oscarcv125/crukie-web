@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { animate, createTimeline } from "animejs";
 import { Cookie, COOKIE_VISUALS } from "@/lib/menu";
+import { useOrder } from "@/lib/order-context";
+import { InstagramIcon } from "./Icons";
 
 interface CookieDetailProps {
   cookie: Cookie;
@@ -15,7 +17,11 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   const imgWrapRef = useRef<HTMLDivElement>(null);
   const [imgError, setImgError] = useState(false);
+  const [localQty, setLocalQty] = useState(1);
+  const [justAdded, setJustAdded] = useState(false);
+  const { addItem, items } = useOrder();
   const visual = COOKIE_VISUALS[cookie.id] ?? { emoji: "🍪", bg: "linear-gradient(135deg,#494331,#2A2319)" };
+  const inOrder = items.find((i) => i.cookieId === cookie.id)?.quantity ?? 0;
 
   const doClose = useCallback(() => {
     const overlay = overlayRef.current;
@@ -89,9 +95,11 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, [doClose]);
 
-  const orderMessage = encodeURIComponent(
-    `Hola! Me interesa ordenar la galleta ${cookie.name} de Crukie 🍪`
-  );
+  const handleAdd = () => {
+    addItem(cookie.id, cookie.name, visual.emoji, localQty);
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1800);
+  };
 
   return (
     <div
@@ -220,35 +228,71 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
               </ul>
             </div>
 
-            {/* CTA */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href={`https://wa.me/?text=${orderMessage}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 hover:scale-105"
+            {/* Add to order */}
+            <div className="flex flex-col gap-3">
+              {/* Qty stepper */}
+              <div className="flex items-center gap-3">
+                <div
+                  className="flex items-center gap-2 rounded-full px-1 py-1"
+                  style={{ backgroundColor: "rgba(250,240,202,0.08)", border: "1px solid rgba(109,174,219,0.25)" }}
+                >
+                  <button
+                    onClick={() => setLocalQty((q) => Math.max(1, q - 1))}
+                    className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base cursor-pointer transition-all duration-150 hover:scale-110"
+                    style={{ backgroundColor: "rgba(250,240,202,0.1)", color: "#FAF0CA" }}
+                  >
+                    −
+                  </button>
+                  <span className="w-6 text-center font-bold text-base" style={{ color: "#FAF0CA" }}>
+                    {localQty}
+                  </span>
+                  <button
+                    onClick={() => setLocalQty((q) => q + 1)}
+                    className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base cursor-pointer transition-all duration-150 hover:scale-110"
+                    style={{ backgroundColor: "#6DAEDB", color: "#011638" }}
+                  >
+                    +
+                  </button>
+                </div>
+                {inOrder > 0 && (
+                  <span className="text-xs" style={{ color: "#6DAEDB" }}>
+                    Ya tienes {inOrder} en tu pedido
+                  </span>
+                )}
+              </div>
+
+              {/* Add button */}
+              <button
+                onClick={handleAdd}
+                className="inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 hover:scale-105 active:scale-[0.97] cursor-pointer"
                 style={{
-                  backgroundColor: "#6DAEDB",
+                  backgroundColor: justAdded ? "#25D366" : "#6DAEDB",
                   color: "#011638",
                   padding: "14px 32px",
                   fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
-                  boxShadow: "0 4px 20px rgba(109,174,219,0.3)",
+                  boxShadow: justAdded
+                    ? "0 4px 20px rgba(37,211,102,0.35)"
+                    : "0 4px 20px rgba(109,174,219,0.3)",
+                  transition: "background-color 0.3s ease, box-shadow 0.3s ease",
                 }}
               >
-                Ordenar por WhatsApp →
-              </a>
+                {justAdded ? `✓ ¡Agregado al pedido!` : `Agregar ${localQty > 1 ? `${localQty}x ` : ""}al pedido →`}
+              </button>
+
+              {/* Instagram link */}
               <a
                 href="https://instagram.com/crukie.mty"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 hover:opacity-80"
                 style={{
-                  border: "2px solid rgba(250,240,202,0.3)",
+                  border: "2px solid rgba(250,240,202,0.25)",
                   color: "#FAF0CA",
-                  padding: "14px 28px",
+                  padding: "12px 28px",
                   fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
                 }}
               >
+                <InstagramIcon className="w-4 h-4" />
                 Instagram
               </a>
             </div>

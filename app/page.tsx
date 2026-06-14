@@ -5,6 +5,7 @@ import HowToOrder from "@/components/HowToOrder";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import WhatsAppFAB from "@/components/WhatsAppFAB";
+import OrderPanel from "@/components/OrderPanel";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Footer />
       <ChatBot />
       <WhatsAppFAB />
+      <OrderPanel />
     </main>
   );
 }

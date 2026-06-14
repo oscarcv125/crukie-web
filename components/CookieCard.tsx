@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { animate } from "animejs";
 import { Cookie, COOKIE_VISUALS } from "@/lib/menu";
+import { useOrder } from "@/lib/order-context";
 
 interface CookieCardProps {
   cookie: Cookie;
@@ -12,24 +13,23 @@ interface CookieCardProps {
 }
 
 export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardProps) {
-  const cardRef = useRef<HTMLButtonElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const [imgError, setImgError] = useState(false);
+  const { items, addItem, setQuantity } = useOrder();
   const visual = COOKIE_VISUALS[cookie.id] ?? { emoji: "🍪", bg: "linear-gradient(135deg,#494331,#2A2319)" };
+  const ordered = items.find((i) => i.cookieId === cookie.id);
+  const qty = ordered?.quantity ?? 0;
 
-  // Pulse + lift on click
+  // Pulse on select
   useEffect(() => {
     const card = cardRef.current;
     if (isSelected && card) {
-      animate(card, {
-        scale: [1, 0.95, 1.03, 1],
-        duration: 480,
-        ease: "outBack(1.5)",
-      });
+      animate(card, { scale: [1, 0.95, 1.03, 1], duration: 480, ease: "outBack(1.5)" });
     }
   }, [isSelected]);
 
-  // 3D tilt on mouse move
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+  // 3D tilt
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
@@ -41,19 +41,18 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
   const handleMouseLeave = () => {
     const card = cardRef.current;
     if (!card) return;
-    animate(card, {
-      rotateX: 0,
-      rotateY: 0,
-      translateZ: 0,
-      duration: 450,
-      ease: "outQuart",
-    });
+    animate(card, { rotateX: 0, rotateY: 0, translateZ: 0, duration: 450, ease: "outQuart" });
   };
 
   return (
-    <button
+    <div
       ref={cardRef}
+      role="button"
+      tabIndex={0}
       onClick={() => onSelect(cookie.id)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onSelect(cookie.id); }
+      }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="cookie-card w-full text-left rounded-2xl overflow-hidden cursor-pointer group"
@@ -70,7 +69,7 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
       aria-pressed={isSelected}
       aria-label={`Ver detalles de ${cookie.name}`}
     >
-      {/* Image — flat top-down view */}
+      {/* Image */}
       <div className="relative overflow-hidden" style={{ height: "200px" }}>
         {!imgError && cookie.imageUrl ? (
           <Image
@@ -89,8 +88,6 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
             {visual.emoji}
           </div>
         )}
-
-        {/* Hover shimmer overlay */}
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
           style={{ backgroundColor: "rgba(0,48,73,0.45)" }}
@@ -108,19 +105,14 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
       <div className="p-5">
         <h3
           className="text-xl font-bold mb-1"
-          style={{
-            fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-            color: "#003049",
-          }}
+          style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", color: "#003049" }}
         >
           {cookie.name}
         </h3>
-
         <p className="text-sm mb-3 leading-snug" style={{ color: "#494331", opacity: 0.72 }}>
           {cookie.description}
         </p>
-
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {cookie.tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
@@ -131,7 +123,51 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
             </span>
           ))}
         </div>
+
+        {/* Order stepper — stopPropagation so it doesn't open the detail */}
+        <div
+          onClick={(e) => e.stopPropagation()}
+          onKeyDown={(e) => e.stopPropagation()}
+        >
+          {qty === 0 ? (
+            <button
+              onClick={() => addItem(cookie.id, cookie.name, visual.emoji)}
+              className="w-full flex items-center justify-center gap-1.5 rounded-full py-2 text-sm font-semibold cursor-pointer transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+              style={{
+                backgroundColor: "rgba(0,48,73,0.07)",
+                color: "#003049",
+                border: "1.5px solid rgba(0,48,73,0.14)",
+                fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
+              }}
+            >
+              <span className="text-base leading-none">+</span>
+              Agregar al pedido
+            </button>
+          ) : (
+            <div className="flex items-center justify-between rounded-full px-1 py-1"
+              style={{ backgroundColor: "rgba(0,48,73,0.07)", border: "1.5px solid rgba(109,174,219,0.3)" }}
+            >
+              <button
+                onClick={() => setQuantity(cookie.id, qty - 1)}
+                className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm cursor-pointer transition-all duration-150 hover:scale-110"
+                style={{ backgroundColor: "rgba(0,48,73,0.1)", color: "#003049" }}
+              >
+                −
+              </button>
+              <span className="text-sm font-bold" style={{ color: "#003049" }}>
+                {qty} en pedido
+              </span>
+              <button
+                onClick={() => setQuantity(cookie.id, qty + 1)}
+                className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm cursor-pointer transition-all duration-150 hover:scale-110"
+                style={{ backgroundColor: "#003049", color: "#FAF0CA" }}
+              >
+                +
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-    </button>
+    </div>
   );
 }
