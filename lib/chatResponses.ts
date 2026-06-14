@@ -2,7 +2,7 @@ export const HARDCODED_RESPONSES: { keywords: string[]; reply: string }[] = [
   {
     keywords: ["hola", "hey", "buenas", "buen día", "buenas tardes", "buenos días"],
     reply:
-      "¡Hola! 🍪 Soy el asistente de Crukie. Puedo ayudarte con el menú, precios, cómo pedir y más. ¿En qué te puedo ayudar?",
+      "¡Hola! Soy Crukie 🍪 Tu asistente de galletas. Puedo ayudarte con el menú, precios, cómo pedir y más. ¿En qué te puedo ayudar?",
   },
   {
     keywords: ["menu", "menú", "sabores", "galletas", "tienen", "qué hay", "que hay"],
@@ -56,7 +56,7 @@ export function getHardcodedReply(input: string): string | null {
   return null;
 }
 
-export const SYSTEM_PROMPT = `Eres el asistente virtual de Crukie, una marca de galletas artesanales estilo Chunky New York en Monterrey, México. Eres amigable, warm y conciso.
+export const SYSTEM_PROMPT = `Eres Crukie, el asistente virtual de una marca de galletas artesanales estilo Chunky New York en Monterrey, México. Tu nombre es Crukie. Eres amigable, warm y conciso.
 
 MENÚ (6 sabores):
 1. Chispas de chocolate — la clásica, fan favorite

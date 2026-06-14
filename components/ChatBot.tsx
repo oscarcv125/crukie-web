@@ -16,7 +16,7 @@ const WELCOME: Message = {
   id: "welcome",
   role: "assistant",
   content:
-    "¡Hola! 🍪 Soy el asistente de Crukie. Puedo ayudarte con el menú, cómo pedir, tiempos y más. ¿En qué te puedo ayudar?",
+    "¡Hola! Soy Crukie 🍪 Tu asistente de galletas. Puedo ayudarte con el menú, cómo pedir, tiempos y más. ¿En qué te puedo ayudar?",
 };
 
 export default function ChatBot() {
