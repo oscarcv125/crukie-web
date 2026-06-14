@@ -8,7 +8,6 @@ export default function WaveCanvas() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -17,25 +16,26 @@ export default function WaveCanvas() {
 
     const setSize = () => {
       canvas.width = window.innerWidth;
-      canvas.height = 110;
+      canvas.height = 150;
     };
-
     setSize();
     window.addEventListener("resize", setSize);
 
     const draw = () => {
       const W = canvas.width;
       const H = canvas.height;
-
       ctx.clearRect(0, 0, W, H);
+
+      // Primary wave — large, slow
       ctx.beginPath();
       ctx.moveTo(0, H);
-
       for (let x = 0; x <= W; x++) {
-        const y = Math.sin((x / W) * Math.PI * 1.4 + t) * 18 + 55;
+        const y =
+          Math.sin((x / W) * Math.PI * 2.4 + t) * 36 +
+          Math.sin((x / W) * Math.PI * 1.1 + t * 0.6) * 18 +
+          82;
         ctx.lineTo(x, y);
       }
-
       ctx.lineTo(W, H);
       ctx.closePath();
       ctx.fillStyle = "#FAF0CA";
@@ -46,7 +46,6 @@ export default function WaveCanvas() {
     };
 
     draw();
-
     return () => {
       cancelAnimationFrame(animFrame);
       window.removeEventListener("resize", setSize);
@@ -57,7 +56,7 @@ export default function WaveCanvas() {
     <canvas
       ref={canvasRef}
       className="absolute bottom-0 left-0 pointer-events-none"
-      style={{ width: "100%", height: "110px", display: "block" }}
+      style={{ width: "100%", height: "150px", display: "block" }}
       aria-hidden="true"
     />
   );

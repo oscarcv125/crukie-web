@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { animate, createTimeline } from "animejs";
+import { createTimeline } from "animejs";
 import WaveCanvas from "./WaveCanvas";
 
 export default function Hero() {
@@ -18,17 +18,14 @@ export default function Hero() {
     const tagline = taglineRef.current;
     const body = bodyRef.current;
     const cta = ctaRef.current;
-
     if (!logo || !title || !tagline || !body || !cta) return;
 
-    // Set initial hidden states
     [logo, title, tagline, body, cta].forEach((el) => {
       el.style.opacity = "0";
       el.style.transform = "translateY(32px)";
     });
 
     const tl = createTimeline({ defaults: { ease: "outExpo", duration: 700 } });
-
     tl.add(logo, { opacity: [0, 1], scale: [0.75, 1], translateY: [0, 0], duration: 800 })
       .add(title, { opacity: [0, 1], translateY: [32, 0] }, "-=500")
       .add(tagline, { opacity: [0, 1], translateY: [24, 0], duration: 600 }, "-=400")
@@ -44,7 +41,7 @@ export default function Hero() {
       style={{
         backgroundColor: "#003049",
         minHeight: "88vh",
-        paddingBottom: "110px",
+        paddingBottom: "150px",
       }}
     >
       <div
@@ -109,7 +106,6 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* Wave canvas — separates hero from menu section */}
       <WaveCanvas />
     </section>
   );

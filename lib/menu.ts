@@ -3,6 +3,7 @@ export interface Cookie {
   slug: string;
   name: string;
   description: string;
+  longDescription: string;
   ingredients: string[];
   tags: string[];
   imageUrl: string;
@@ -14,60 +15,78 @@ export const cookies: Cookie[] = [
     id: 1,
     slug: "chispas-chocolate",
     name: "Chispas de Chocolate",
-    description: "La clásica. Fan favorite.",
-    ingredients: ["masa base", "chispas de chocolate premium"],
+    description: "La clásica que convierte a cualquiera en fan.",
+    longDescription:
+      "Masa dorada con borde ligeramente crujiente y centro suave que casi se derrite. Cada mordida viene cargada de chispas de chocolate semi-amargo premium que se funden con el calor de la galleta recién horneada. Simple, honesta e irresistible — la razón por la que Crukie existe.",
+    ingredients: ["masa base artesanal", "chispas de chocolate semi-amargo premium"],
     tags: ["clásica", "fan favorite"],
-    imageUrl: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&h=400&fit=crop&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&h=600&fit=crop&q=80",
     isAvailable: true,
   },
   {
     id: 2,
     slug: "nutella",
     name: "Nutella",
-    description: "Con relleno de Nutella al centro.",
-    ingredients: ["masa base", "Nutella"],
+    description: "Centro de Nutella que fluye en cada mordida.",
+    longDescription:
+      "Una galleta chunky que esconde un secreto en su interior: un corazón generoso de Nutella que, al partirla, fluye lentamente como lava de avellana y chocolate. La costra dorada contrasta con ese relleno cremoso que lo cambia todo. Para quienes saben que el interior importa tanto como el exterior.",
+    ingredients: ["masa base artesanal", "Nutella de avellana"],
     tags: ["rellena", "hazelnut"],
-    imageUrl: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=400&fit=crop&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=600&fit=crop&q=80",
     isAvailable: true,
   },
   {
     id: 3,
     slug: "oreo",
     name: "Oreo",
-    description: "Chispas de chocolate + galleta Oreo.",
-    ingredients: ["masa base", "chispas de chocolate", "Oreo"],
+    description: "Dos iconos juntos, un resultado devastador.",
+    longDescription:
+      "Galleta chunky con masa de chocolate intenso, trozos de Oreo incrustados por todas partes y chispas de chocolate que completan el crimen. La textura alternante de la masa suave y los pedazos crujientes de Oreo crea una experiencia que no puedes conseguir con ninguna de las dos por separado. Doble galleta, doble placer.",
+    ingredients: ["masa base artesanal", "chispas de chocolate", "galleta Oreo troceada"],
     tags: ["cookies & cream"],
-    imageUrl: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=600&h=400&fit=crop&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=600&h=600&fit=crop&q=80",
     isAvailable: true,
   },
   {
     id: 4,
     slug: "biscoff",
     name: "Biscoff",
-    description: "Chispas de chocolate + crema Biscoff.",
-    ingredients: ["masa base", "chispas de chocolate", "crema Biscoff"],
+    description: "El sabor que enamora a primera probada.",
+    longDescription:
+      "Masa enriquecida con canela y especias al estilo speculoos, coronada con crema Biscoff caramelizada y trozos crujientes de galleta Lotus. El resultado es cálido, aromático y con ese toque caramelizado que hace que la gente pida una segunda sin terminar la primera. La cookie más elegante del menú.",
+    ingredients: ["masa base artesanal", "chispas de chocolate", "crema Biscoff Lotus", "galleta Lotus troceada"],
     tags: ["speculoos", "caramelizado"],
-    imageUrl: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=600&h=400&fit=crop&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=600&h=600&fit=crop&q=80",
     isAvailable: true,
   },
   {
     id: 5,
     slug: "peanut-butter",
     name: "Peanut Butter",
-    description: "Para los amantes del cacahuate.",
-    ingredients: ["masa base", "mantequilla de cacahuate"],
-    tags: ["cacahuate", "proteína"],
-    imageUrl: "https://images.unsplash.com/photo-1548783300-a96468f78b9b?w=600&h=400&fit=crop&q=80",
+    description: "Densa, cremosa y completamente adictiva.",
+    longDescription:
+      "Masa cargada de mantequilla de cacahuate natural que le da un sabor profundo, salado y dulce al mismo tiempo. La textura es más densa que el resto — casi como morder un bloque de puro cacahuate en forma de cookie. No lleva chispas de chocolate porque no las necesita: aquí el cacahuate es el protagonista absoluto.",
+    ingredients: ["masa base artesanal", "mantequilla de cacahuate natural"],
+    tags: ["cacahuate", "sin chocolate"],
+    imageUrl:
+      "https://images.unsplash.com/photo-1548783300-a96468f78b9b?w=600&h=600&fit=crop&q=80",
     isAvailable: true,
   },
   {
     id: 6,
     slug: "kinder",
     name: "Kinder",
-    description: "Chispas de chocolate + chocolate Kinder.",
-    ingredients: ["masa base", "chispas de chocolate", "chocolate Kinder"],
+    description: "Nostalgia de infancia en formato XXL.",
+    longDescription:
+      "Todo lo que amabas de Kinder de niño, ahora dentro de una galleta chunky que no cabe en una mano. Trozos de chocolate Kinder y chispas de chocolate se funden con la masa dorada para crear capas de sabor que van del lácteo al intenso. Una galleta que evoca recuerdos y crea nuevos al mismo tiempo.",
+    ingredients: ["masa base artesanal", "chispas de chocolate", "chocolate Kinder troceado"],
     tags: ["chocolate", "leche"],
-    imageUrl: "https://images.unsplash.com/photo-1607920592519-bab2a80efd95?w=600&h=400&fit=crop&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1607920592519-bab2a80efd95?w=600&h=600&fit=crop&q=80",
     isAvailable: true,
   },
 ];
