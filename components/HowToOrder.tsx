@@ -50,7 +50,7 @@ const STEPS: Step[] = [
     num: "05",
     icon: IconConfetti,
     title: "¡A disfrutar!",
-    body: "Recoge en domicilio o recibe envío a tu zona. Pedidos con mínimo 72 hrs de anticipación.",
+    body: "Recoge en domicilio o recibe envío a tu zona. Pedidos grandes (12+ galletas) requieren 72 hrs de anticipación.",
   },
 ];
 

@@ -17,12 +17,12 @@ export const HARDCODED_RESPONSES: { keywords: string[]; reply: string }[] = [
   {
     keywords: ["pedir", "ordenar", "pedido", "hacer", "quiero"],
     reply:
-      "Para hacer tu pedido:\n1. Escríbenos por Instagram o WhatsApp\n2. Dinos: nombre, sabor, cantidad, fecha de entrega y si tienes alergias\n3. Confirmamos con 50% de anticipo\n\nRecuerda: pedidos con mínimo 72 horas de anticipación. ⏰",
+      "Para hacer tu pedido:\n1. Escríbenos por Instagram o WhatsApp\n2. Dinos: nombre, sabor, cantidad, fecha de entrega y si tienes alergias\n3. Confirmamos con 50% de anticipo\n\nRecuerda: pedidos grandes (12+ galletas) requieren 72 horas de anticipación. ⏰",
   },
   {
     keywords: ["tiempo", "cuándo", "cuando", "demora", "entrega", "listo", "tardas"],
     reply:
-      "Los pedidos necesitan mínimo 72 horas de anticipación. Si es urgente (24–48 hrs), hay un cargo adicional del 30%. 🕐",
+      "Los pedidos grandes (12+ galletas) necesitan mínimo 72 horas de anticipación. Si es urgente (24–48 hrs), hay un cargo adicional del 30%. 🕐",
   },
   {
     keywords: ["descuento", "lealtad", "sellos", "puntos", "programa"],
@@ -66,7 +66,7 @@ MENÚ (6 sabores):
 5. Peanut Butter — para los amantes del cacahuate
 6. Kinder — chispas de chocolate + chocolate Kinder
 
-PEDIDOS: mínimo 72 hrs anticipación. 50% anticipo al confirmar. Contacto: Instagram o WhatsApp. Urgentes (24–48 hrs): 30% cargo extra.
+PEDIDOS: 12+ galletas requieren mínimo 72 hrs anticipación. 50% anticipo al confirmar. Contacto: Instagram o WhatsApp. Urgentes (24–48 hrs): 30% cargo extra.
 
 LEALTAD: 10 compras = galleta gratis. 6–12 galletas: 10% off. 12+: 15% off.
 

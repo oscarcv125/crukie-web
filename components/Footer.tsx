@@ -116,7 +116,7 @@ export default function Footer() {
           >
             <p className="font-semibold mb-2 flex items-center gap-2" style={{ color: "#6DAEDB" }}>
               <IconClock size={16} stroke={2} />
-              Pedidos mínimo 72 hrs
+              Pedidos grandes (12+): 72 hrs de anticipo
             </p>
             <p style={{ color: "#FAF0CA", opacity: 0.6 }}>
               Pedidos urgentes (24–48 hrs) tienen un cargo adicional del 30%.

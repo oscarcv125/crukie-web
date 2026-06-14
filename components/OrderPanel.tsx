@@ -6,7 +6,7 @@ import { useOrder } from "@/lib/order-context";
 import { COOKIE_VISUALS } from "@/lib/menu";
 import { WhatsAppIcon, InstagramIcon } from "./Icons";
 import { WHATSAPP_TEXT_URL, INSTAGRAM_URL } from "@/lib/contact";
-import { IconShoppingBag, IconX } from "@tabler/icons-react";
+import { IconShoppingBag, IconX, IconAlertTriangle } from "@tabler/icons-react";
 
 export default function OrderPanel() {
   const { items, setQuantity, clearOrder, totalItems, buildWhatsAppText } = useOrder();
@@ -278,12 +278,22 @@ export default function OrderPanel() {
                   <InstagramIcon className="w-5 h-5" />
                   Enviar por Instagram
                 </button>
-                <p
-                  className="text-center text-xs mt-0.5"
-                  style={{ color: "#FAF0CA", opacity: 0.3 }}
-                >
-                  Mínimo 72 hrs de anticipación · 50% anticipo al confirmar
-                </p>
+                {totalItems >= 12 ? (
+                  <p
+                    className="text-center text-xs mt-1 font-bold flex items-center justify-center gap-1.5"
+                    style={{ color: "#FAF0CA" }}
+                  >
+                    <IconAlertTriangle size={16} stroke={2.5} />
+                    Pedido grande ({totalItems} galletas): Requiere 72 hrs de anticipación
+                  </p>
+                ) : (
+                  <p
+                    className="text-center text-xs mt-0.5"
+                    style={{ color: "#FAF0CA", opacity: 0.4 }}
+                  >
+                    50% de anticipo al confirmar tu pedido
+                  </p>
+                )}
               </div>
             )}
           </div>
