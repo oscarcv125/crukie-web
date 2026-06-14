@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+  --color-chocolate: #494331;
+  --color-crema: #faf0ca;
+  --color-azul-cielo: #6daedb;
+  --color-azul-marino: #011638;
+  --color-azul-profundo: #003049;
+}
+
+@theme inline {
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-dm-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #faf0ca;
+  color: #494331;
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-playfair), "Playfair Display", serif;
+}
