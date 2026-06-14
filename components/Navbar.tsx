@@ -23,16 +23,16 @@ export default function Navbar() {
         boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,0.22)" : "none",
       }}
     >
-      <nav className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between gap-4">
+      <nav className="relative max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
         {/* Logo / wordmark */}
         <a
           href="#"
           className="flex items-center gap-2.5 shrink-0"
-          aria-label="Crukie — inicio"
+          aria-label="Crukies — inicio"
         >
           <Image
             src="/LOGO.png"
-            alt="Crukie"
+            alt="Crukies"
             width={34}
             height={34}
             className="drop-shadow-sm"
@@ -45,12 +45,12 @@ export default function Navbar() {
               color: "#FAF0CA",
             }}
           >
-            Crukie
+            Crukies
           </span>
         </a>
 
-        {/* Center links */}
-        <div className="flex items-center gap-6 text-sm font-medium">
+        {/* Center links — absolutely centered regardless of logo/CTA widths */}
+        <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-8 text-sm font-medium">
           <a
             href="#menu"
             className="transition-opacity hover:opacity-70"
@@ -75,7 +75,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
             style={{ color: "#FAF0CA", opacity: 0.85 }}
-            aria-label="Instagram de Crukie"
+            aria-label="Instagram de Crukies"
           >
             <InstagramIcon className="w-5 h-5" />
           </a>
@@ -85,8 +85,12 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-semibold transition-all duration-200 hover:scale-105"
-            style={{ backgroundColor: "#25D366", color: "#fff" }}
-            aria-label="WhatsApp de Crukie"
+            style={{
+              backgroundColor: "#25D366",
+              color: "#fff",
+              fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
+            }}
+            aria-label="WhatsApp de Crukies"
           >
             <WhatsAppIcon className="w-4 h-4" />
             Ordenar

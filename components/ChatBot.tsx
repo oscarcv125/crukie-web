@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { animate } from "animejs";
+import { IconX } from "@tabler/icons-react";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import { getHardcodedReply } from "@/lib/chatResponses";
@@ -16,7 +17,7 @@ const WELCOME: Message = {
   id: "welcome",
   role: "assistant",
   content:
-    "¡Hola! Soy Crukie 🍪 Tu asistente de galletas. Puedo ayudarte con el menú, cómo pedir, tiempos y más. ¿En qué te puedo ayudar?",
+    "¡Hola! Soy Crukies 🍪 Tu asistente de galletas. Puedo ayudarte con el menú, cómo pedir, tiempos y más. ¿En qué te puedo ayudar?",
 };
 
 export default function ChatBot() {
@@ -120,7 +121,7 @@ export default function ChatBot() {
   return (
     <div
       className="fixed bottom-6 right-6 z-50"
-      style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}
+      style={{ fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
     >
       {/* Chat panel */}
       {isOpen && (
@@ -147,16 +148,16 @@ export default function ChatBot() {
                   Crukie
                 </p>
                 <p className="text-xs" style={{ color: "#6DAEDB" }}>
-                  Asistente virtual
+                  Tu asistente 🍪
                 </p>
               </div>
             </div>
             <button
               onClick={handleToggle}
-              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer text-lg"
+              className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
               style={{ color: "#FAF0CA" }}
             >
-              ✕
+              <IconX size={18} />
             </button>
           </div>
 
@@ -192,9 +193,9 @@ export default function ChatBot() {
           color: "#011638",
           boxShadow: "0 4px 24px rgba(109,174,219,0.5)",
         }}
-        aria-label={isOpen ? "Cerrar chat" : "Abrir asistente de Crukie"}
+        aria-label={isOpen ? "Cerrar chat" : "Abrir asistente de Crukies"}
       >
-        {isOpen ? "✕" : "🍪"}
+        {isOpen ? <IconX size={22} /> : "🍪"}
       </button>
     </div>
   );

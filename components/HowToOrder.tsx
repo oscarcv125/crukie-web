@@ -2,37 +2,53 @@
 
 import { useEffect, useRef } from "react";
 import { animate, stagger } from "animejs";
+import {
+  IconMessageCircle,
+  IconClipboardList,
+  IconCreditCard,
+  IconConfetti,
+} from "@tabler/icons-react";
 import { InstagramIcon, WhatsAppIcon } from "./Icons";
 import { INSTAGRAM_URL, WHATSAPP_ORDER_URL } from "@/lib/contact";
 
-const STEPS = [
+type StepIcon = React.ComponentType<{ size?: number; stroke?: number; style?: React.CSSProperties }>;
+
+interface Step {
+  num: string;
+  icon?: StepIcon;
+  emoji?: string;
+  title: string;
+  body: string;
+}
+
+const STEPS: Step[] = [
   {
     num: "01",
     emoji: "🍪",
     title: "Elige tu galleta",
-    body: "Explora nuestro menú de 6 sabores Chunky New York. ¿No puedes decidir? Pide más de uno.",
+    body: "Explora nuestro menú de 6 sabores artesanales. ¿No puedes decidir? Pide más de uno.",
   },
   {
     num: "02",
-    emoji: "💬",
+    icon: IconMessageCircle,
     title: "Escríbenos",
     body: "Contáctanos por Instagram o WhatsApp. Respondemos rápido y con gusto te asesoramos.",
   },
   {
     num: "03",
-    emoji: "📋",
+    icon: IconClipboardList,
     title: "Cuéntanos todo",
     body: "Nombre, sabor, cantidad, fecha de entrega y si tienes alergias. Mientras más detalle, mejor.",
   },
   {
     num: "04",
-    emoji: "💳",
+    icon: IconCreditCard,
     title: "Confirma con anticipo",
     body: "50% al confirmar el pedido. El resto lo pagas al recibir tu orden. Transferencia o efectivo.",
   },
   {
     num: "05",
-    emoji: "🎉",
+    icon: IconConfetti,
     title: "¡A disfrutar!",
     body: "Recoge en domicilio o recibe envío a tu zona. Pedidos con mínimo 72 hrs de anticipación.",
   },
@@ -100,7 +116,7 @@ export default function HowToOrder() {
             ¿Cómo pedir?
           </h2>
           <p className="text-base max-w-sm mx-auto leading-relaxed" style={{ color: "#FAF0CA", opacity: 0.6 }}>
-            En 5 pasos sencillos, tu Crukie llega a tus manos.
+            En 5 pasos sencillos, tu Crukies llega a tus manos.
           </p>
           <div
             className="mx-auto mt-5 rounded-full"
@@ -123,7 +139,11 @@ export default function HowToOrder() {
                 >
                   {step.num}
                 </span>
-                <span className="text-2xl">{step.emoji}</span>
+                {step.icon ? (
+                  <step.icon size={26} stroke={1.5} style={{ color: "#6DAEDB" }} />
+                ) : (
+                  <span className="text-2xl">{step.emoji}</span>
+                )}
               </div>
               <h3
                 className="text-base font-bold"
@@ -151,7 +171,7 @@ export default function HowToOrder() {
             style={{
               backgroundColor: "#25D366",
               color: "#fff",
-              fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
+              fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
               boxShadow: "0 4px 20px rgba(37,211,102,0.3)",
             }}
           >
@@ -166,7 +186,7 @@ export default function HowToOrder() {
             style={{
               border: "2px solid rgba(250,240,202,0.3)",
               color: "#FAF0CA",
-              fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
+              fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
             }}
           >
             <InstagramIcon className="w-5 h-5" />

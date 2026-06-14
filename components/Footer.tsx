@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { IconClock } from "@tabler/icons-react";
 import { InstagramIcon, WhatsAppIcon } from "./Icons";
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE, WHATSAPP_URL } from "@/lib/contact";
 
@@ -11,7 +12,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex flex-col gap-4 max-w-xs">
             <div className="flex items-center gap-3">
-              <Image src="/LOGO.png" alt="Crukie" width={44} height={44} />
+              <Image src="/LOGO.png" alt="Crukies" width={44} height={44} />
               <span
                 className="text-2xl font-bold"
                 style={{
@@ -19,11 +20,11 @@ export default function Footer() {
                   color: "#FAF0CA",
                 }}
               >
-                Crukie
+                Crukies
               </span>
             </div>
             <p className="text-sm leading-relaxed" style={{ color: "#FAF0CA", opacity: 0.55 }}>
-              Galletas artesanales estilo Chunky New York. Hechas con amor en Monterrey, México.
+              Galletas artesanales hechas con amor en Monterrey, México.
             </p>
 
             {/* Social icons */}
@@ -113,8 +114,9 @@ export default function Footer() {
             className="rounded-2xl p-5 text-sm max-w-[220px]"
             style={{ backgroundColor: "rgba(109,174,219,0.08)", border: "1px solid rgba(109,174,219,0.2)" }}
           >
-            <p className="font-semibold mb-2" style={{ color: "#6DAEDB" }}>
-              ⏰ Pedidos mínimo 72 hrs
+            <p className="font-semibold mb-2 flex items-center gap-2" style={{ color: "#6DAEDB" }}>
+              <IconClock size={16} stroke={2} />
+              Pedidos mínimo 72 hrs
             </p>
             <p style={{ color: "#FAF0CA", opacity: 0.6 }}>
               Pedidos urgentes (24–48 hrs) tienen un cargo adicional del 30%.
@@ -127,7 +129,7 @@ export default function Footer() {
           className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs"
           style={{ borderTop: "1px solid rgba(250,240,202,0.08)", color: "#FAF0CA", opacity: 0.35 }}
         >
-          <p>© {new Date().getFullYear()} Crukie. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Crukies. Todos los derechos reservados.</p>
           <p>Hecho con 🍪 en Monterrey, México</p>
         </div>
       </div>

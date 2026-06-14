@@ -8,8 +8,8 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 export const WHATSAPP_ORDER_URL = (cookieName?: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     cookieName
-      ? `Hola! Me interesa ordenar la galleta ${cookieName} de Crukie 🍪`
-      : "Hola! Me gustaría hacer un pedido en Crukie 🍪"
+      ? `Hola! Me interesa ordenar la galleta ${cookieName} de Crukies 🍪`
+      : "Hola! Me gustaría hacer un pedido en Crukies 🍪"
   )}`;
 
 export const WHATSAPP_TEXT_URL = (text: string) =>

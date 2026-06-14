@@ -50,7 +50,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
   const buildWhatsAppText = useCallback(() => {
     const lines = items.map((i) => `• ${i.quantity}x ${i.name} ${i.emoji}`).join("\n");
     return [
-      "¡Hola! Me gustaría hacer un pedido de Crukie 🍪",
+      "¡Hola! Me gustaría hacer un pedido de Crukies 🍪",
       "",
       "🛒 Mi pedido:",
       lines,

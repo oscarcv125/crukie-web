@@ -6,6 +6,7 @@ import { useOrder } from "@/lib/order-context";
 import { COOKIE_VISUALS } from "@/lib/menu";
 import { WhatsAppIcon, InstagramIcon } from "./Icons";
 import { WHATSAPP_TEXT_URL, INSTAGRAM_URL } from "@/lib/contact";
+import { IconShoppingBag, IconX } from "@tabler/icons-react";
 
 export default function OrderPanel() {
   const { items, setQuantity, clearOrder, totalItems, buildWhatsAppText } = useOrder();
@@ -112,12 +113,12 @@ export default function OrderPanel() {
             backgroundColor: added ? "#6DAEDB" : "#011638",
             color: "#FAF0CA",
             border: "1.5px solid rgba(109,174,219,0.4)",
-            fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
+            fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
             boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
             willChange: "transform, opacity",
           }}
         >
-          <span style={{ fontSize: "1.05rem" }}>🛒</span>
+          <IconShoppingBag size={18} stroke={1.8} />
           <span>Ver pedido</span>
           <span
             className="ml-0.5 px-2 py-0.5 rounded-full text-xs font-bold"
@@ -154,7 +155,7 @@ export default function OrderPanel() {
                     color: "#FAF0CA",
                   }}
                 >
-                  Tu pedido 🛒
+                  Tu pedido
                 </h2>
                 <p className="text-xs mt-0.5" style={{ color: "#6DAEDB" }}>
                   {totalItems} {totalItems === 1 ? "galleta" : "galletas"} seleccionadas
@@ -172,10 +173,10 @@ export default function OrderPanel() {
                 )}
                 <button
                   onClick={closePanel}
-                  className="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110 text-sm"
+                  className="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110"
                   style={{ backgroundColor: "rgba(250,240,202,0.1)", color: "#FAF0CA" }}
                 >
-                  ✕
+                  <IconX size={16} />
                 </button>
               </div>
             </div>
@@ -258,7 +259,7 @@ export default function OrderPanel() {
                   style={{
                     backgroundColor: "#25D366",
                     color: "#fff",
-                    fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
+                    fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
                     boxShadow: "0 4px 24px rgba(37,211,102,0.35)",
                   }}
                 >
@@ -271,7 +272,7 @@ export default function OrderPanel() {
                   style={{
                     border: "2px solid rgba(250,240,202,0.25)",
                     color: "#FAF0CA",
-                    fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
+                    fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
                   }}
                 >
                   <InstagramIcon className="w-5 h-5" />

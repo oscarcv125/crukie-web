@@ -137,7 +137,7 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
                 backgroundColor: "rgba(0,48,73,0.07)",
                 color: "#003049",
                 border: "1.5px solid rgba(0,48,73,0.14)",
-                fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
+                fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
               }}
             >
               <span className="text-base leading-none">+</span>

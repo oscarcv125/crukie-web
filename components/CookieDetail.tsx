@@ -6,6 +6,7 @@ import { animate, createTimeline } from "animejs";
 import { Cookie, COOKIE_VISUALS } from "@/lib/menu";
 import { useOrder } from "@/lib/order-context";
 import { InstagramIcon } from "./Icons";
+import { IconX, IconCheck, IconArrowRight } from "@tabler/icons-react";
 
 interface CookieDetailProps {
   cookie: Cookie;
@@ -116,11 +117,11 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
         {/* Close */}
         <button
           onClick={doClose}
-          className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm cursor-pointer transition-all duration-200 hover:scale-110"
+          className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110"
           style={{ backgroundColor: "rgba(250,240,202,0.15)", color: "#FAF0CA" }}
           aria-label="Cerrar"
         >
-          ✕
+          <IconX size={18} />
         </button>
 
         <div className="flex flex-col md:flex-row min-h-[70vh] md:min-h-[65vh]">
@@ -269,14 +270,18 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
                   backgroundColor: justAdded ? "#25D366" : "#6DAEDB",
                   color: "#011638",
                   padding: "14px 32px",
-                  fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
+                  fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
                   boxShadow: justAdded
                     ? "0 4px 20px rgba(37,211,102,0.35)"
                     : "0 4px 20px rgba(109,174,219,0.3)",
                   transition: "background-color 0.3s ease, box-shadow 0.3s ease",
                 }}
               >
-                {justAdded ? `✓ ¡Agregado al pedido!` : `Agregar ${localQty > 1 ? `${localQty}x ` : ""}al pedido →`}
+                {justAdded ? (
+                  <><IconCheck size={16} strokeWidth={2.5} />&nbsp;¡Agregado al pedido!</>
+                ) : (
+                  <>{`Agregar ${localQty > 1 ? `${localQty}x ` : ""}al pedido`}&nbsp;<IconArrowRight size={16} /></>
+                )}
               </button>
 
               {/* Instagram link */}
@@ -289,7 +294,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
                   border: "2px solid rgba(250,240,202,0.25)",
                   color: "#FAF0CA",
                   padding: "12px 28px",
-                  fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
+                  fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
                 }}
               >
                 <InstagramIcon className="w-4 h-4" />

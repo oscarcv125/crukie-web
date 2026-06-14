@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Playfair_Display, Momo_Trust_Display } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 
@@ -9,16 +9,17 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const momoTrust = Momo_Trust_Display({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-momo",
   display: "swap",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
-  title: "Crukie — Galletas Chunky New York en Monterrey",
+  title: "Crukies — Galletas Artesanales en Monterrey",
   description:
-    "Galletas artesanales estilo Chunky New York. Grandes, suaves por dentro y crujientes por fuera. Chispas de chocolate, Nutella, Oreo, Biscoff, Peanut Butter y Kinder.",
+    "Galletas artesanales hechas con ingredientes premium. Grandes, suaves por dentro y crujientes por fuera. Chispas de chocolate, Nutella, Oreo, Biscoff, Peanut Butter y Kinder.",
 };
 
 export default function RootLayout({
@@ -27,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${playfair.variable} ${dmSans.variable}`}>
+    <html lang="es" className={`${playfair.variable} ${momoTrust.variable}`}>
       <body><Providers>{children}</Providers></body>
     </html>
   );

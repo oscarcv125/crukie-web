@@ -50,10 +50,10 @@ export default function Hero() {
       >
         <div ref={logoRef} className="mb-6">
           <Image
-            src="/LOGO.png"
-            alt="Crukie Logo"
-            width={110}
-            height={110}
+            src="/logo-beige.svg"
+            alt="Crukies Logo"
+            width={200}
+            height={200}
             className="mx-auto drop-shadow-xl"
             priority
           />
@@ -69,7 +69,7 @@ export default function Hero() {
             lineHeight: 1.05,
           }}
         >
-          Crukie
+          Crukies
         </h1>
 
         <p
@@ -77,7 +77,7 @@ export default function Hero() {
           className="text-base sm:text-lg font-light uppercase tracking-[0.22em] mb-5"
           style={{ color: "#6DAEDB" }}
         >
-          Galletas Chunky New York
+          Galletas Artesanales
         </p>
 
         <p
@@ -98,7 +98,7 @@ export default function Hero() {
             color: "#011638",
             padding: "14px 40px",
             fontSize: "1rem",
-            fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
+            fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
             boxShadow: "0 4px 24px rgba(109,174,219,0.35)",
           }}
         >
