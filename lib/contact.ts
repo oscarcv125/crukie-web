@@ -8,7 +8,7 @@ export const WHATSAPP_ORDER_URL = (cookieName?: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     cookieName
       ? `Hola! Me interesa ordenar la galleta ${cookieName} de Crukies`
-      : "Hola! Me gustaría hacer un pedido en Crukies"
+      : "Hola! Me gustaria hacer un pedido en Crukies"
   )}`;
 
 export const WHATSAPP_TEXT_URL = (text: string) =>

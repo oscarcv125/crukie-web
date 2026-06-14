@@ -64,12 +64,10 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
   const totalItems = useMemo(() => items.reduce((s, i) => s + i.quantity, 0), [items]);
 
   const buildWhatsAppText = useCallback(() => {
-    const cookie = "\u{1F36A}";
     const lines = items.map((i) => `• ${i.quantity}x ${i.name}`).join("\n");
     return [
-      `¡Hola! Me gustaría hacer un pedido de Crukies ${cookie}`,
+      "Hola! Me gustaria hacer un pedido de Crukies:",
       "",
-      "Mi pedido:",
       lines,
       "",
       `Total: ${totalItems} ${totalItems === 1 ? "galleta" : "galletas"}`,
