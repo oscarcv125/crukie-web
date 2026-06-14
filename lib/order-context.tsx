@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useCallback, useContext, useMemo, useState } from "react";
+import React, { createContext, useCallback, useContext, useMemo, useState, useEffect } from "react";
 
 export interface OrderItem {
   cookieId: number;
@@ -21,6 +21,23 @@ const OrderContext = createContext<OrderContextValue | null>(null);
 
 export function OrderProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<OrderItem[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("crukie-cart");
+      if (stored) setItems(JSON.parse(stored));
+    } catch (e) {
+      console.error("Failed to load cart", e);
+    }
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      localStorage.setItem("crukie-cart", JSON.stringify(items));
+    }
+  }, [items, mounted]);
 
   const addItem = useCallback((cookieId: number, name: string, qty = 1) => {
     setItems((prev) => {

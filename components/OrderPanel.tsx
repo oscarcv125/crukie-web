@@ -173,6 +173,7 @@ export default function OrderPanel() {
                 )}
                 <button
                   onClick={closePanel}
+                  aria-label="Cerrar pedido"
                   className="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110"
                   style={{ backgroundColor: "rgba(250,240,202,0.1)", color: "#FAF0CA" }}
                 >
@@ -223,6 +224,7 @@ export default function OrderPanel() {
                         <div className="flex items-center gap-2 shrink-0">
                           <button
                             onClick={() => setQuantity(item.cookieId, item.quantity - 1)}
+                            aria-label="Restar galleta"
                             className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm cursor-pointer transition-all duration-150 hover:scale-110"
                             style={{ backgroundColor: "rgba(250,240,202,0.1)", color: "#FAF0CA" }}
                           >
@@ -236,6 +238,7 @@ export default function OrderPanel() {
                           </span>
                           <button
                             onClick={() => setQuantity(item.cookieId, item.quantity + 1)}
+                            aria-label="Sumar galleta"
                             className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm cursor-pointer transition-all duration-150 hover:scale-110"
                             style={{ backgroundColor: "#6DAEDB", color: "#011638" }}
                           >

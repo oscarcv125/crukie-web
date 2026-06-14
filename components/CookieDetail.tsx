@@ -117,9 +117,9 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
         {/* Close */}
         <button
           onClick={doClose}
+          aria-label="Cerrar detalle"
           className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110"
           style={{ backgroundColor: "rgba(250,240,202,0.15)", color: "#FAF0CA" }}
-          aria-label="Cerrar"
         >
           <IconX size={18} />
         </button>
@@ -239,6 +239,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
                 >
                   <button
                     onClick={() => setLocalQty((q) => Math.max(1, q - 1))}
+                    aria-label="Restar galleta"
                     className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base cursor-pointer transition-all duration-150 hover:scale-110"
                     style={{ backgroundColor: "rgba(250,240,202,0.1)", color: "#FAF0CA" }}
                   >
@@ -249,6 +250,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
                   </span>
                   <button
                     onClick={() => setLocalQty((q) => q + 1)}
+                    aria-label="Sumar galleta"
                     className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base cursor-pointer transition-all duration-150 hover:scale-110"
                     style={{ backgroundColor: "#6DAEDB", color: "#011638" }}
                   >
