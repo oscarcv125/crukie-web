@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { animate } from "animejs";
 import { Cookie, COOKIE_VISUALS } from "@/lib/menu";
 import { useOrder } from "@/lib/order-context";
+import { IconCookie } from "@tabler/icons-react";
 
 interface CookieCardProps {
   cookie: Cookie;
@@ -16,7 +17,7 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
   const cardRef = useRef<HTMLDivElement>(null);
   const [imgError, setImgError] = useState(false);
   const { items, addItem, setQuantity } = useOrder();
-  const visual = COOKIE_VISUALS[cookie.id] ?? { emoji: "🍪", bg: "linear-gradient(135deg,#494331,#2A2319)" };
+  const visual = COOKIE_VISUALS[cookie.id] ?? { bg: "linear-gradient(135deg,#494331,#2A2319)" };
   const ordered = items.find((i) => i.cookieId === cookie.id);
   const qty = ordered?.quantity ?? 0;
 
@@ -85,7 +86,7 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
             className="absolute inset-0 flex items-center justify-center text-7xl"
             style={{ background: visual.bg }}
           >
-            {visual.emoji}
+            <IconCookie size={24} stroke={1.5} style={{ color: "#FAF0CA" }} />
           </div>
         )}
         <div
@@ -131,7 +132,7 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
         >
           {qty === 0 ? (
             <button
-              onClick={() => addItem(cookie.id, cookie.name, visual.emoji)}
+              onClick={() => addItem(cookie.id, cookie.name)}
               className="w-full flex items-center justify-center gap-1.5 rounded-full py-2 text-sm font-semibold cursor-pointer transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
               style={{
                 backgroundColor: "rgba(0,48,73,0.07)",

@@ -6,7 +6,7 @@ import { animate, createTimeline } from "animejs";
 import { Cookie, COOKIE_VISUALS } from "@/lib/menu";
 import { useOrder } from "@/lib/order-context";
 import { InstagramIcon } from "./Icons";
-import { IconX, IconCheck, IconArrowRight } from "@tabler/icons-react";
+import { IconX, IconCheck, IconArrowRight, IconCookie } from "@tabler/icons-react";
 
 interface CookieDetailProps {
   cookie: Cookie;
@@ -21,7 +21,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
   const [localQty, setLocalQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
   const { addItem, items } = useOrder();
-  const visual = COOKIE_VISUALS[cookie.id] ?? { emoji: "🍪", bg: "linear-gradient(135deg,#494331,#2A2319)" };
+  const visual = COOKIE_VISUALS[cookie.id] ?? { bg: "linear-gradient(135deg,#494331,#2A2319)" };
   const inOrder = items.find((i) => i.cookieId === cookie.id)?.quantity ?? 0;
 
   const doClose = useCallback(() => {
@@ -97,7 +97,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
   }, [doClose]);
 
   const handleAdd = () => {
-    addItem(cookie.id, cookie.name, visual.emoji, localQty);
+    addItem(cookie.id, cookie.name, localQty);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1800);
   };
@@ -161,7 +161,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
                   className="w-full aspect-square rounded-3xl flex items-center justify-center"
                   style={{ fontSize: "6rem", background: visual.bg }}
                 >
-                  {visual.emoji}
+                  <IconCookie size={80} stroke={1.5} style={{ color: "#FAF0CA" }} />
                 </div>
               )}
             </div>

@@ -85,11 +85,11 @@ export const cookies: Cookie[] = [
   },
 ];
 
-export const COOKIE_VISUALS: Record<number, { emoji: string; bg: string }> = {
-  1: { emoji: "🍫", bg: "linear-gradient(135deg,#6B3A2A,#3D1F12)" },
-  2: { emoji: "🌰", bg: "linear-gradient(135deg,#7B4D1E,#3D1A06)" },
-  3: { emoji: "🖤", bg: "linear-gradient(135deg,#2A2A2A,#111111)" },
-  4: { emoji: "🧡", bg: "linear-gradient(135deg,#C07820,#6B3A00)" },
-  5: { emoji: "🥜", bg: "linear-gradient(135deg,#A67C52,#6B4226)" },
-  6: { emoji: "🍬", bg: "linear-gradient(135deg,#7B3F1A,#3D1A06)" },
+export const COOKIE_VISUALS: Record<number, { bg: string }> = {
+  1: { bg: "linear-gradient(135deg,#6B3A2A,#3D1F12)" },
+  2: { bg: "linear-gradient(135deg,#7B4D1E,#3D1A06)" },
+  3: { bg: "linear-gradient(135deg,#2A2A2A,#111111)" },
+  4: { bg: "linear-gradient(135deg,#C07820,#6B3A00)" },
+  5: { bg: "linear-gradient(135deg,#A67C52,#6B4226)" },
+  6: { bg: "linear-gradient(135deg,#7B3F1A,#3D1A06)" },
 };

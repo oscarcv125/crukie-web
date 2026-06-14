@@ -6,7 +6,7 @@ import { useOrder } from "@/lib/order-context";
 import { COOKIE_VISUALS } from "@/lib/menu";
 import { WhatsAppIcon, InstagramIcon } from "./Icons";
 import { WHATSAPP_TEXT_URL, INSTAGRAM_URL } from "@/lib/contact";
-import { IconShoppingBag, IconX, IconAlertTriangle } from "@tabler/icons-react";
+import { IconShoppingBag, IconX, IconAlertTriangle, IconCookie } from "@tabler/icons-react";
 
 export default function OrderPanel() {
   const { items, setQuantity, clearOrder, totalItems, buildWhatsAppText } = useOrder();
@@ -193,7 +193,7 @@ export default function OrderPanel() {
               ) : (
                 <ul>
                   {items.map((item, idx) => {
-                    const visual = COOKIE_VISUALS[item.cookieId] ?? { emoji: "🍪", bg: "" };
+                    const visual = COOKIE_VISUALS[item.cookieId] ?? { bg: "" };
                     return (
                       <li
                         key={item.cookieId}
@@ -205,7 +205,9 @@ export default function OrderPanel() {
                               : "none",
                         }}
                       >
-                        <span className="text-3xl w-10 text-center shrink-0">{visual.emoji}</span>
+                        <span className="w-10 flex items-center justify-center shrink-0">
+                          <IconCookie size={28} stroke={1.5} style={{ color: "#FAF0CA" }} />
+                        </span>
 
                         <p
                           className="flex-1 text-sm font-semibold truncate"

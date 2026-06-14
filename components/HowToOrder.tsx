@@ -133,17 +133,18 @@ export default function HowToOrder() {
               style={{ backgroundColor: "rgba(250,240,202,0.06)", border: "1px solid rgba(109,174,219,0.18)" }}
             >
               <div className="flex items-center gap-3">
+                <div
+                  className="w-14 h-14 shrink-0 rounded-full flex items-center justify-center shadow-lg"
+                  style={{ backgroundColor: "#FAF0CA", color: "#011638" }}
+                >
+                  <step.icon size={28} stroke={1.5} />
+                </div>
                 <span
                   className="text-xs font-bold tracking-widest"
                   style={{ color: "#6DAEDB" }}
                 >
                   {step.num}
                 </span>
-                {step.icon ? (
-                  <step.icon size={26} stroke={1.5} style={{ color: "#6DAEDB" }} />
-                ) : (
-                  <span className="text-2xl">{step.emoji}</span>
-                )}
               </div>
               <h3
                 className="text-base font-bold"

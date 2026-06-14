@@ -5,13 +5,12 @@ import React, { createContext, useCallback, useContext, useMemo, useState } from
 export interface OrderItem {
   cookieId: number;
   name: string;
-  emoji: string;
   quantity: number;
 }
 
 interface OrderContextValue {
   items: OrderItem[];
-  addItem: (cookieId: number, name: string, emoji: string, qty?: number) => void;
+  addItem: (cookieId: number, name: string, qty?: number) => void;
   setQuantity: (cookieId: number, qty: number) => void;
   clearOrder: () => void;
   totalItems: number;
@@ -23,7 +22,7 @@ const OrderContext = createContext<OrderContextValue | null>(null);
 export function OrderProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<OrderItem[]>([]);
 
-  const addItem = useCallback((cookieId: number, name: string, emoji: string, qty = 1) => {
+  const addItem = useCallback((cookieId: number, name: string, qty = 1) => {
     setItems((prev) => {
       const hit = prev.find((i) => i.cookieId === cookieId);
       if (hit) {
@@ -31,7 +30,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
           i.cookieId === cookieId ? { ...i, quantity: i.quantity + qty } : i
         );
       }
-      return [...prev, { cookieId, name, emoji, quantity: qty }];
+      return [...prev, { cookieId, name, quantity: qty }];
     });
   }, []);
 
@@ -48,7 +47,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
   const totalItems = useMemo(() => items.reduce((s, i) => s + i.quantity, 0), [items]);
 
   const buildWhatsAppText = useCallback(() => {
-    const lines = items.map((i) => `• ${i.quantity}x ${i.name} ${i.emoji}`).join("\n");
+    const lines = items.map((i) => `• ${i.quantity}x ${i.name}`).join("\n");
     return [
       "¡Hola! Me gustaría hacer un pedido de Crukies 🍪",
       "",

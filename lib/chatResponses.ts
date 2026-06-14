@@ -17,12 +17,12 @@ export const HARDCODED_RESPONSES: { keywords: string[]; reply: string }[] = [
   {
     keywords: ["pedir", "ordenar", "pedido", "hacer", "quiero"],
     reply:
-      "Para hacer tu pedido:\n1. Escríbenos por Instagram o WhatsApp\n2. Dinos: nombre, sabor, cantidad, fecha de entrega y si tienes alergias\n3. Confirmamos con 50% de anticipo\n\nRecuerda: pedidos grandes (12+ galletas) requieren 72 horas de anticipación. ⏰",
+      "Para hacer tu pedido:\n1. Escríbenos por Instagram o WhatsApp\n2. Dinos: nombre, sabor, cantidad, fecha de entrega y si tienes alergias\n3. Confirmamos con 50% de anticipo\n\nRecuerda: pedidos grandes (12+ galletas) requieren 72 horas de anticipación.",
   },
   {
     keywords: ["tiempo", "cuándo", "cuando", "demora", "entrega", "listo", "tardas"],
     reply:
-      "Los pedidos grandes (12+ galletas) necesitan mínimo 72 horas de anticipación. Si es urgente (24–48 hrs), hay un cargo adicional del 30%. 🕐",
+      "Los pedidos grandes (12+ galletas) necesitan mínimo 72 horas de anticipación. Si es urgente (24–48 hrs), hay un cargo adicional del 30%.",
   },
   {
     keywords: ["descuento", "lealtad", "sellos", "puntos", "programa"],
