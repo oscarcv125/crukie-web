@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Cookie base -->
+  <circle cx="32" cy="32" r="30" fill="#C8874A"/>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#9B5E2A" stroke-width="1.5"/>
+  <!-- Subtle highlight -->
+  <circle cx="32" cy="32" r="27" fill="#D4924F"/>
+  <!-- Chocolate chips -->
+  <ellipse cx="22" cy="22" rx="5" ry="4" fill="#3D1F10" transform="rotate(-15 22 22)"/>
+  <ellipse cx="41" cy="23" rx="4.5" ry="3.5" fill="#4A2818" transform="rotate(20 41 23)"/>
+  <ellipse cx="28" cy="39" rx="4.5" ry="3.5" fill="#3D1F10" transform="rotate(-10 28 39)"/>
+  <ellipse cx="43" cy="41" rx="5" ry="3.5" fill="#4A2818" transform="rotate(25 43 41)"/>
+  <ellipse cx="17" cy="39" rx="4" ry="3" fill="#3D1F10" transform="rotate(-5 17 39)"/>
+  <ellipse cx="35" cy="17" rx="3.5" ry="3" fill="#4A2818" transform="rotate(15 35 17)"/>
+</svg>
