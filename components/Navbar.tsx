@@ -31,7 +31,7 @@ export default function Navbar() {
           aria-label="Crukies — inicio"
         >
           <Image
-            src="/LOGO.png"
+            src="/logo-beige.svg"
             alt="Crukies"
             width={34}
             height={34}
