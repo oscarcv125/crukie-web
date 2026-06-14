@@ -7,6 +7,7 @@ import {
   IconClipboardList,
   IconCreditCard,
   IconConfetti,
+  IconCookie,
 } from "@tabler/icons-react";
 import { InstagramIcon, WhatsAppIcon } from "./Icons";
 import { INSTAGRAM_URL, WHATSAPP_ORDER_URL } from "@/lib/contact";
@@ -15,8 +16,7 @@ type StepIcon = React.ComponentType<{ size?: number; stroke?: number; style?: Re
 
 interface Step {
   num: string;
-  icon?: StepIcon;
-  emoji?: string;
+  icon: StepIcon;
   title: string;
   body: string;
 }
@@ -24,7 +24,7 @@ interface Step {
 const STEPS: Step[] = [
   {
     num: "01",
-    emoji: "🍪",
+    icon: IconCookie,
     title: "Elige tu galleta",
     body: "Explora nuestro menú de 6 sabores artesanales. ¿No puedes decidir? Pide más de uno.",
   },
