@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { IconClock } from "@tabler/icons-react";
 import { InstagramIcon, WhatsAppIcon } from "./Icons";
-import { INSTAGRAM_URL, INSTAGRAM_HANDLE, WHATSAPP_URL } from "@/lib/contact";
+import { INSTAGRAM_URL, INSTAGRAM_HANDLE, WHATSAPP_ORDER_URL } from "@/lib/contact";
 
 export default function Footer() {
   return (
@@ -40,7 +40,7 @@ export default function Footer() {
                 <InstagramIcon className="w-5 h-5" />
               </a>
               <a
-                href={WHATSAPP_URL}
+                href={WHATSAPP_ORDER_URL()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
@@ -95,7 +95,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href={WHATSAPP_URL}
+                    href={WHATSAPP_ORDER_URL()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 transition-opacity hover:opacity-70"

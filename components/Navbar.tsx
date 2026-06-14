@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { InstagramIcon, WhatsAppIcon } from "./Icons";
-import { INSTAGRAM_URL, WHATSAPP_URL } from "@/lib/contact";
+import { INSTAGRAM_URL, WHATSAPP_ORDER_URL } from "@/lib/contact";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -81,7 +81,7 @@ export default function Navbar() {
           </a>
 
           <a
-            href={WHATSAPP_URL}
+            href={WHATSAPP_ORDER_URL()}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-semibold transition-all duration-200 hover:scale-105"
