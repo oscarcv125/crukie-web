@@ -121,7 +121,7 @@ export default function ChatBot() {
   return (
     <div
       className="fixed bottom-6 right-6 z-50"
-      style={{ fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
+      style={{ fontFamily: "Garet, sans-serif" }}
     >
       {/* Chat panel */}
       {isOpen && (

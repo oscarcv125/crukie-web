@@ -199,7 +199,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
               </h2>
               <span
                 className="text-2xl font-bold shrink-0 mt-1"
-                style={{ color: "#6DAEDB", fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
+                style={{ color: "#6DAEDB", fontFamily: "Garet, sans-serif" }}
               >
                 ${cookie.price}
               </span>
@@ -280,7 +280,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
                   backgroundColor: justAdded ? "#25D366" : "#6DAEDB",
                   color: "#011638",
                   padding: "14px 32px",
-                  fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
+                  fontFamily: "Garet, sans-serif",
                   boxShadow: justAdded
                     ? "0 4px 20px rgba(37,211,102,0.35)"
                     : "0 4px 20px rgba(109,174,219,0.3)",
@@ -304,7 +304,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
                   border: "2px solid rgba(250,240,202,0.25)",
                   color: "#FAF0CA",
                   padding: "12px 28px",
-                  fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
+                  fontFamily: "Garet, sans-serif",
                 }}
               >
                 <InstagramIcon className="w-4 h-4" />

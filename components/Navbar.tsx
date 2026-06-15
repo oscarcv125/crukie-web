@@ -88,7 +88,7 @@ export default function Navbar() {
             style={{
               backgroundColor: "#25D366",
               color: "#fff",
-              fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
+              fontFamily: "Garet, sans-serif",
             }}
             aria-label="WhatsApp de Crukies"
           >

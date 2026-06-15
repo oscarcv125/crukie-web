@@ -40,7 +40,7 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
         style={{
           backgroundColor: "#F5E8A0",
           color: "#494331",
-          fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
+          fontFamily: "Garet, sans-serif",
         }}
         onFocus={(e) => (e.target.style.borderColor = "#6DAEDB")}
         onBlur={(e) => (e.target.style.borderColor = "transparent")}

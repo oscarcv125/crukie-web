@@ -113,7 +113,7 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
           </h3>
           <span
             className="text-sm font-bold shrink-0 mt-0.5"
-            style={{ color: "#003049", fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
+            style={{ color: "#003049", fontFamily: "Garet, sans-serif" }}
           >
             $30
           </span>
@@ -146,7 +146,7 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
                 backgroundColor: "rgba(0,48,73,0.07)",
                 color: "#003049",
                 border: "1.5px solid rgba(0,48,73,0.14)",
-                fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
+                fontFamily: "Garet, sans-serif",
               }}
             >
               <span className="text-base leading-none">+</span>

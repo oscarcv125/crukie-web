@@ -98,7 +98,7 @@ export default function Hero() {
             color: "#011638",
             padding: "14px 40px",
             fontSize: "1rem",
-            fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
+            fontFamily: "Garet, sans-serif",
             boxShadow: "0 4px 24px rgba(109,174,219,0.35)",
           }}
         >
