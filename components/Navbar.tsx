@@ -41,7 +41,7 @@ export default function Navbar() {
           <span
             className="text-xl font-bold hidden sm:block"
             style={{
-              fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+              fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em",
               color: "#FAF0CA",
             }}
           >

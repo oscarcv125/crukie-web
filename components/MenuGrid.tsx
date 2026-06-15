@@ -80,7 +80,7 @@ export default function MenuGrid() {
             <h2
               className="font-bold mb-4"
               style={{
-                fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+                fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em",
                 color: "#494331",
                 fontSize: "clamp(2rem, 6vw, 3.2rem)",
               }}

@@ -107,7 +107,7 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
         <div className="flex items-start justify-between mb-1 gap-2">
           <h3
             className="text-xl font-bold"
-            style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", color: "#003049" }}
+            style={{ fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em", color: "#003049" }}
           >
             {cookie.name}
           </h3>

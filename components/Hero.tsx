@@ -63,7 +63,7 @@ export default function Hero() {
           ref={titleRef}
           className="font-bold tracking-tight mb-3"
           style={{
-            fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+            fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em",
             color: "#FAF0CA",
             fontSize: "clamp(3.5rem, 10vw, 6rem)",
             lineHeight: 1.05,
@@ -82,15 +82,8 @@ export default function Hero() {
 
         <p
           ref={bodyRef}
-          className="text-base sm:text-lg max-w-xl mb-10"
-          style={{ 
-            color: "#FAF0CA", 
-            opacity: 0.82,
-            fontFamily: "Garet, sans-serif",
-            fontWeight: 850,
-            letterSpacing: "-0.048em",
-            lineHeight: 0.89 
-          }}
+          className="text-base sm:text-lg max-w-xl leading-relaxed mb-10"
+          style={{ color: "#FAF0CA", opacity: 0.82 }}
         >
           Artesanales, irresistibles. Hechas con ingredientes premium y un
           toque casero que se nota en cada mordida.

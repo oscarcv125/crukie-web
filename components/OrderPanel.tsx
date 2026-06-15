@@ -151,7 +151,7 @@ export default function OrderPanel() {
                 <h2
                   className="font-bold text-lg"
                   style={{
-                    fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+                    fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em",
                     color: "#FAF0CA",
                   }}
                 >
@@ -214,7 +214,7 @@ export default function OrderPanel() {
                           className="flex-1 text-sm font-semibold truncate"
                           style={{
                             color: "#FAF0CA",
-                            fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+                            fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em",
                           }}
                         >
                           {item.name}

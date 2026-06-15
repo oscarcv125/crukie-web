@@ -16,7 +16,7 @@ export default function Footer() {
               <span
                 className="text-2xl font-bold"
                 style={{
-                  fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+                  fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em",
                   color: "#FAF0CA",
                 }}
               >

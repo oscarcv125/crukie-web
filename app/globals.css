@@ -10,7 +10,6 @@
 }
 
 @theme inline {
-  --font-display: var(--font-playfair);
   --font-body: var(--font-momo);
 }
 
@@ -34,5 +33,8 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-playfair), "Playfair Display", serif;
+  font-family: "Garet", sans-serif;
+  font-weight: 850;
+  letter-spacing: -0.048em;
+  line-height: 0.89;
 }

@@ -189,7 +189,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
               <h2
                 className="font-bold"
                 style={{
-                  fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+                  fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em",
                   color: "#FAF0CA",
                   fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
                   lineHeight: 1.1,

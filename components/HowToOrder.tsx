@@ -108,7 +108,7 @@ export default function HowToOrder() {
           <h2
             className="font-bold mb-4"
             style={{
-              fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+              fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em",
               color: "#FAF0CA",
               fontSize: "clamp(2rem, 6vw, 3rem)",
             }}
@@ -149,7 +149,7 @@ export default function HowToOrder() {
               <h3
                 className="text-base font-bold"
                 style={{
-                  fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+                  fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em",
                   color: "#FAF0CA",
                 }}
               >
