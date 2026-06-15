@@ -104,12 +104,20 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
 
       {/* Card body */}
       <div className="p-5">
-        <h3
-          className="text-xl font-bold mb-1"
-          style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", color: "#003049" }}
-        >
-          {cookie.name}
-        </h3>
+        <div className="flex items-start justify-between mb-1 gap-2">
+          <h3
+            className="text-xl font-bold"
+            style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", color: "#003049" }}
+          >
+            {cookie.name}
+          </h3>
+          <span
+            className="text-sm font-bold shrink-0 mt-0.5"
+            style={{ color: "#003049", fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
+          >
+            $30
+          </span>
+        </div>
         <p className="text-sm mb-3 leading-snug" style={{ color: "#494331", opacity: 0.72 }}>
           {cookie.description}
         </p>
@@ -132,7 +140,7 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
         >
           {qty === 0 ? (
             <button
-              onClick={() => addItem(cookie.id, cookie.name)}
+              onClick={() => addItem(cookie.id, cookie.name, cookie.price)}
               className="w-full flex items-center justify-center gap-1.5 rounded-full py-2 text-sm font-semibold cursor-pointer transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
               style={{
                 backgroundColor: "rgba(0,48,73,0.07)",

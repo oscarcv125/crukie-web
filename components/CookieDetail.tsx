@@ -97,7 +97,7 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
   }, [doClose]);
 
   const handleAdd = () => {
-    addItem(cookie.id, cookie.name, localQty);
+    addItem(cookie.id, cookie.name, cookie.price, localQty);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1800);
   };
@@ -185,17 +185,25 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
               ))}
             </div>
 
-            <h2
-              className="font-bold mb-4"
-              style={{
-                fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-                color: "#FAF0CA",
-                fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-                lineHeight: 1.1,
-              }}
-            >
-              {cookie.name}
-            </h2>
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <h2
+                className="font-bold"
+                style={{
+                  fontFamily: "var(--font-playfair), 'Playfair Display', serif",
+                  color: "#FAF0CA",
+                  fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
+                  lineHeight: 1.1,
+                }}
+              >
+                {cookie.name}
+              </h2>
+              <span
+                className="text-2xl font-bold shrink-0 mt-1"
+                style={{ color: "#6DAEDB", fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
+              >
+                ${cookie.price}
+              </span>
+            </div>
 
             <p
               className="text-base leading-relaxed mb-8"

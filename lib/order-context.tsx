@@ -6,14 +6,16 @@ export interface OrderItem {
   cookieId: number;
   name: string;
   quantity: number;
+  price: number;
 }
 
 interface OrderContextValue {
   items: OrderItem[];
-  addItem: (cookieId: number, name: string, qty?: number) => void;
+  addItem: (cookieId: number, name: string, price: number, qty?: number) => void;
   setQuantity: (cookieId: number, qty: number) => void;
   clearOrder: () => void;
   totalItems: number;
+  totalPrice: number;
   buildWhatsAppText: () => string;
 }
 
@@ -39,7 +41,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
     }
   }, [items, mounted]);
 
-  const addItem = useCallback((cookieId: number, name: string, qty = 1) => {
+  const addItem = useCallback((cookieId: number, name: string, price: number, qty = 1) => {
     setItems((prev) => {
       const hit = prev.find((i) => i.cookieId === cookieId);
       if (hit) {
@@ -47,7 +49,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
           i.cookieId === cookieId ? { ...i, quantity: i.quantity + qty } : i
         );
       }
-      return [...prev, { cookieId, name, quantity: qty }];
+      return [...prev, { cookieId, name, price, quantity: qty }];
     });
   }, []);
 
@@ -62,20 +64,21 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
   const clearOrder = useCallback(() => setItems([]), []);
 
   const totalItems = useMemo(() => items.reduce((s, i) => s + i.quantity, 0), [items]);
+  const totalPrice = useMemo(() => items.reduce((s, i) => s + i.price * i.quantity, 0), [items]);
 
   const buildWhatsAppText = useCallback(() => {
-    const lines = items.map((i) => `• ${i.quantity}x ${i.name}`).join("\n");
+    const lines = items.map((i) => `• ${i.quantity}x ${i.name} ($${i.price * i.quantity} MXN)`).join("\n");
     return [
       "Hola! Me gustaria hacer un pedido de Crukies:",
       "",
       lines,
       "",
-      `Total: ${totalItems} ${totalItems === 1 ? "galleta" : "galletas"}`,
+      `Total: ${totalItems} ${totalItems === 1 ? "galleta" : "galletas"} - $${totalPrice} MXN`,
     ].join("\n");
-  }, [items, totalItems]);
+  }, [items, totalItems, totalPrice]);
 
   return (
-    <OrderContext.Provider value={{ items, addItem, setQuantity, clearOrder, totalItems, buildWhatsAppText }}>
+    <OrderContext.Provider value={{ items, addItem, setQuantity, clearOrder, totalItems, totalPrice, buildWhatsAppText }}>
       {children}
     </OrderContext.Provider>
   );

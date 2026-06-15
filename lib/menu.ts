@@ -8,6 +8,7 @@ export interface Cookie {
   tags: string[];
   imageUrl: string;
   isAvailable: boolean;
+  price: number;
 }
 
 export const cookies: Cookie[] = [
@@ -22,6 +23,7 @@ export const cookies: Cookie[] = [
     tags: ["clásica", "fan favorite"],
     imageUrl: "/images/chispas-chocolate-v2.png",
     isAvailable: true,
+    price: 30,
   },
   {
     id: 2,
@@ -34,6 +36,7 @@ export const cookies: Cookie[] = [
     tags: ["rellena", "hazelnut"],
     imageUrl: "/images/nutella-v2.png",
     isAvailable: true,
+    price: 30,
   },
   {
     id: 3,
@@ -46,6 +49,7 @@ export const cookies: Cookie[] = [
     tags: ["cookies & cream"],
     imageUrl: "/images/oreo-v2.png",
     isAvailable: true,
+    price: 30,
   },
   {
     id: 4,
@@ -58,6 +62,7 @@ export const cookies: Cookie[] = [
     tags: ["speculoos", "caramelizado"],
     imageUrl: "/images/biscoff-v2.png",
     isAvailable: true,
+    price: 30,
   },
   {
     id: 5,
@@ -70,6 +75,7 @@ export const cookies: Cookie[] = [
     tags: ["cacahuate", "sin chocolate"],
     imageUrl: "/images/peanut-butter-v2.png",
     isAvailable: true,
+    price: 30,
   },
   {
     id: 6,
@@ -82,6 +88,7 @@ export const cookies: Cookie[] = [
     tags: ["chocolate", "leche"],
     imageUrl: "/images/kinder-v2.png",
     isAvailable: true,
+    price: 30,
   },
 ];
 

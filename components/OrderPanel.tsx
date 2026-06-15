@@ -9,7 +9,7 @@ import { WHATSAPP_TEXT_URL, INSTAGRAM_URL } from "@/lib/contact";
 import { IconShoppingBag, IconX, IconAlertTriangle, IconCookie } from "@tabler/icons-react";
 
 export default function OrderPanel() {
-  const { items, setQuantity, clearOrder, totalItems, buildWhatsAppText } = useOrder();
+  const { items, setQuantity, clearOrder, totalItems, totalPrice, buildWhatsAppText } = useOrder();
   const [isOpen, setIsOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [added, setAdded] = useState(false);
@@ -258,6 +258,16 @@ export default function OrderPanel() {
                 className="px-6 py-5 flex flex-col gap-3"
                 style={{ borderTop: "1px solid rgba(109,174,219,0.15)" }}
               >
+                {/* Total */}
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-sm" style={{ color: "#FAF0CA", opacity: 0.6 }}>Total</span>
+                  <span
+                    className="text-xl font-bold"
+                    style={{ color: "#FAF0CA", fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
+                  >
+                    ${totalPrice} MXN
+                  </span>
+                </div>
                 <button
                   onClick={handleWhatsApp}
                   className="w-full flex items-center justify-center gap-2 rounded-full font-semibold py-3.5 text-sm cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
