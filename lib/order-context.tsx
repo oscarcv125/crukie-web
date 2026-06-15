@@ -67,9 +67,10 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
   const totalPrice = useMemo(() => items.reduce((s, i) => s + i.price * i.quantity, 0), [items]);
 
   const buildWhatsAppText = useCallback(() => {
+    const cookie = "🍪";
     const lines = items.map((i) => `• ${i.quantity}x ${i.name} ($${i.price * i.quantity} MXN)`).join("\n");
     return [
-      "Hola! Me gustaria hacer un pedido de Crukies:",
+      `Hola! Me gustaria hacer un pedido de Crukies ${cookie}`,
       "",
       lines,
       "",
