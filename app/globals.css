@@ -24,7 +24,10 @@ html {
 body {
   background-color: #faf0ca;
   color: #494331;
-  font-family: var(--font-momo), "Momo Trust Display", sans-serif;
+  font-family: "Garet", var(--font-momo), "Momo Trust Display", sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.048em;
+  line-height: 0.89;
   margin: 0;
   padding: 0;
 }
