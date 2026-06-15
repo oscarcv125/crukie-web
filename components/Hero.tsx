@@ -82,8 +82,15 @@ export default function Hero() {
 
         <p
           ref={bodyRef}
-          className="text-base sm:text-lg max-w-xl leading-relaxed mb-10"
-          style={{ color: "#FAF0CA", opacity: 0.82 }}
+          className="text-base sm:text-lg max-w-xl mb-10"
+          style={{ 
+            color: "#FAF0CA", 
+            opacity: 0.82,
+            fontFamily: "Garet, sans-serif",
+            fontWeight: 850,
+            letterSpacing: "-0.048em",
+            lineHeight: 0.89 
+          }}
         >
           Artesanales, irresistibles. Hechas con ingredientes premium y un
           toque casero que se nota en cada mordida.
@@ -98,7 +105,7 @@ export default function Hero() {
             color: "#011638",
             padding: "14px 40px",
             fontSize: "1rem",
-            fontFamily: "Garet, sans-serif",
+            fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
             boxShadow: "0 4px 24px rgba(109,174,219,0.35)",
           }}
         >

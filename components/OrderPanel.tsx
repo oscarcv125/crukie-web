@@ -113,7 +113,7 @@ export default function OrderPanel() {
             backgroundColor: added ? "#6DAEDB" : "#011638",
             color: "#FAF0CA",
             border: "1.5px solid rgba(109,174,219,0.4)",
-            fontFamily: "Garet, sans-serif",
+            fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
             boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
             willChange: "transform, opacity",
           }}
@@ -263,7 +263,7 @@ export default function OrderPanel() {
                   <span className="text-sm" style={{ color: "#FAF0CA", opacity: 0.6 }}>Total</span>
                   <span
                     className="text-xl font-bold"
-                    style={{ color: "#FAF0CA", fontFamily: "Garet, sans-serif" }}
+                    style={{ color: "#FAF0CA", fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
                   >
                     ${totalPrice} MXN
                   </span>
@@ -274,7 +274,7 @@ export default function OrderPanel() {
                   style={{
                     backgroundColor: "#25D366",
                     color: "#fff",
-                    fontFamily: "Garet, sans-serif",
+                    fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
                     boxShadow: "0 4px 24px rgba(37,211,102,0.35)",
                   }}
                 >
@@ -287,7 +287,7 @@ export default function OrderPanel() {
                   style={{
                     border: "2px solid rgba(250,240,202,0.25)",
                     color: "#FAF0CA",
-                    fontFamily: "Garet, sans-serif",
+                    fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
                   }}
                 >
                   <InstagramIcon className="w-5 h-5" />

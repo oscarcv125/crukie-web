@@ -172,7 +172,7 @@ export default function HowToOrder() {
             style={{
               backgroundColor: "#25D366",
               color: "#fff",
-              fontFamily: "Garet, sans-serif",
+              fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
               boxShadow: "0 4px 20px rgba(37,211,102,0.3)",
             }}
           >
@@ -187,7 +187,7 @@ export default function HowToOrder() {
             style={{
               border: "2px solid rgba(250,240,202,0.3)",
               color: "#FAF0CA",
-              fontFamily: "Garet, sans-serif",
+              fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
             }}
           >
             <InstagramIcon className="w-5 h-5" />
