@@ -2,7 +2,7 @@ export const HARDCODED_RESPONSES: { keywords: string[]; reply: string }[] = [
   {
     keywords: ["hola", "hey", "buenas", "buen día", "buenas tardes", "buenos días"],
     reply:
-      "¡Hola! Soy Crukies 🍪 Tu asistente de galletas. Puedo ayudarte con el menú, precios, cómo pedir y más. ¿En qué te puedo ayudar?",
+      "¡Hola! Soy Crukies 🍪 Puedo ayudarte con el menú, precios, cómo pedir y más. También tengo un quiz para descubrir qué cookie te va — escribe \"quiz\". ¿En qué te puedo ayudar?",
   },
   {
     keywords: ["menu", "menú", "sabores", "galletas", "tienen", "qué hay", "que hay"],

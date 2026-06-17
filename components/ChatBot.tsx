@@ -6,6 +6,12 @@ import { IconX } from "@tabler/icons-react";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import { getHardcodedReply } from "@/lib/chatResponses";
+import {
+  QUIZ_INTRO,
+  QUIZ_QUESTIONS,
+  buildResultMessage,
+  computeWinner,
+} from "@/lib/cookieQuiz";
 
 interface Message {
   id: string;
@@ -20,16 +26,37 @@ const WELCOME: Message = {
     "¡Hola! Soy Crukies 🍪 Tu asistente de galletas. Puedo ayudarte con el menú, cómo pedir, tiempos y más. ¿En qué te puedo ayudar?",
 };
 
+const QUIZ_TRIGGER_KEYWORDS = [
+  "quiz",
+  "test",
+  "personalidad",
+  "recomienda",
+  "recomiéndame",
+  "recomiendame",
+  "cuál me gusta",
+  "cual me gusta",
+  "cuál es para mí",
+  "cual es para mi",
+  "ayúdame a elegir",
+  "ayudame a elegir",
+];
+
+function matchesQuiz(input: string): boolean {
+  const lower = input.toLowerCase();
+  return QUIZ_TRIGGER_KEYWORDS.some((kw) => lower.includes(kw));
+}
+
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [isLoading, setIsLoading] = useState(false);
+  const [quizStep, setQuizStep] = useState<number | null>(null);
+  const [quizAnswers, setQuizAnswers] = useState<number[]>([]);
   const panelRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const prevOpen = useRef(false);
 
-  // Animate panel open/close
   useEffect(() => {
     const panel = panelRef.current;
     if (!panel) return;
@@ -48,7 +75,6 @@ export default function ChatBot() {
     prevOpen.current = isOpen;
   }, [isOpen]);
 
-  // Animate FAB button on toggle
   const handleToggle = () => {
     if (btnRef.current) {
       animate(btnRef.current, {
@@ -61,14 +87,62 @@ export default function ChatBot() {
     setIsOpen((prev) => !prev);
   };
 
-  // Scroll to latest message
   useEffect(() => {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages, isOpen]);
+  }, [messages, isOpen, quizStep]);
+
+  const appendAssistant = (content: string, delay = 250) => {
+    setTimeout(() => {
+      setMessages((prev) => [
+        ...prev,
+        { id: `${Date.now()}-${Math.random()}`, role: "assistant", content },
+      ]);
+    }, delay);
+  };
+
+  const startQuiz = () => {
+    setQuizAnswers([]);
+    setQuizStep(0);
+    appendAssistant(QUIZ_INTRO, 200);
+    appendAssistant(QUIZ_QUESTIONS[0].prompt, 600);
+  };
+
+  const handleQuizAnswer = (optionIdx: number) => {
+    if (quizStep === null) return;
+    const question = QUIZ_QUESTIONS[quizStep];
+    const option = question.options[optionIdx];
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: `${Date.now()}-user`,
+        role: "user",
+        content: option.label,
+      },
+    ]);
+
+    const newAnswers = [...quizAnswers, optionIdx];
+    setQuizAnswers(newAnswers);
+
+    const nextStep = quizStep + 1;
+    if (nextStep >= QUIZ_QUESTIONS.length) {
+      const winner = computeWinner(newAnswers);
+      setQuizStep(null);
+      appendAssistant(buildResultMessage(winner), 400);
+    } else {
+      setQuizStep(nextStep);
+      appendAssistant(QUIZ_QUESTIONS[nextStep].prompt, 400);
+    }
+  };
 
   const handleSend = async (text: string) => {
+    if (quizStep !== null) {
+      setQuizStep(null);
+      setQuizAnswers([]);
+    }
+
     const userMsg: Message = {
       id: Date.now().toString(),
       role: "user",
@@ -76,14 +150,14 @@ export default function ChatBot() {
     };
     setMessages((prev) => [...prev, userMsg]);
 
+    if (matchesQuiz(text)) {
+      startQuiz();
+      return;
+    }
+
     const hardcoded = getHardcodedReply(text);
     if (hardcoded) {
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          { id: (Date.now() + 1).toString(), role: "assistant", content: hardcoded },
-        ]);
-      }, 300);
+      appendAssistant(hardcoded, 300);
       return;
     }
 
@@ -118,12 +192,14 @@ export default function ChatBot() {
     }
   };
 
+  const showQuickActions = quizStep === null && messages.length <= 1;
+  const currentQuestion = quizStep !== null ? QUIZ_QUESTIONS[quizStep] : null;
+
   return (
     <div
       className="fixed bottom-6 right-6 z-50"
       style={{ fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
     >
-      {/* Chat panel */}
       {isOpen && (
         <div
           ref={panelRef}
@@ -131,12 +207,11 @@ export default function ChatBot() {
           style={{
             width: "340px",
             maxWidth: "calc(100vw - 2rem)",
-            maxHeight: "480px",
+            maxHeight: "520px",
             backgroundColor: "#FAF0CA",
             border: "1px solid rgba(73,67,49,0.12)",
           }}
         >
-          {/* Header */}
           <div
             className="px-5 py-4 flex items-center justify-between shrink-0"
             style={{ backgroundColor: "#003049" }}
@@ -161,7 +236,6 @@ export default function ChatBot() {
             </button>
           </div>
 
-          {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4" style={{ minHeight: "260px" }}>
             {messages.map((msg) => (
               <ChatMessage key={msg.id} role={msg.role} content={msg.content} />
@@ -176,6 +250,53 @@ export default function ChatBot() {
                 </div>
               </div>
             )}
+
+            {showQuickActions && (
+              <div className="flex flex-wrap gap-2 mt-2 mb-1">
+                <button
+                  onClick={startQuiz}
+                  className="px-3 py-1.5 rounded-full text-xs font-semibold transition-transform hover:scale-105 cursor-pointer"
+                  style={{
+                    backgroundColor: "#6DAEDB",
+                    color: "#011638",
+                    border: "1px solid rgba(1,22,56,0.15)",
+                  }}
+                >
+                  ✨ Quiz: ¿Cuál es mi cookie?
+                </button>
+                <button
+                  onClick={() => handleSend("Ver menú")}
+                  className="px-3 py-1.5 rounded-full text-xs font-semibold transition-transform hover:scale-105 cursor-pointer"
+                  style={{
+                    backgroundColor: "transparent",
+                    color: "#003049",
+                    border: "1px solid #003049",
+                  }}
+                >
+                  Ver menú
+                </button>
+              </div>
+            )}
+
+            {currentQuestion && (
+              <div className="flex flex-col gap-2 mt-2 mb-1">
+                {currentQuestion.options.map((opt, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleQuizAnswer(idx)}
+                    className="text-left px-3 py-2 rounded-xl text-sm transition-all hover:translate-x-1 cursor-pointer"
+                    style={{
+                      backgroundColor: "#F5E8A0",
+                      color: "#494331",
+                      border: "1px solid rgba(73,67,49,0.15)",
+                    }}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            )}
+
             <div ref={messagesEndRef} />
           </div>
 
@@ -183,7 +304,6 @@ export default function ChatBot() {
         </div>
       )}
 
-      {/* FAB button */}
       <button
         ref={btnRef}
         onClick={handleToggle}

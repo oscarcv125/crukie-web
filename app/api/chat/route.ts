@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getOpenAIClient } from "@/lib/openai";
+import { getAIClient } from "@/lib/openai";
 import { SYSTEM_PROMPT } from "@/lib/chatResponses";
 
 export async function POST(req: NextRequest) {
-  const openai = getOpenAIClient();
+  const ai = getAIClient();
 
-  if (!openai) {
+  if (!ai) {
     return NextResponse.json(
       {
         reply:
@@ -18,8 +18,8 @@ export async function POST(req: NextRequest) {
   try {
     const { messages } = await req.json();
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+    const completion = await ai.client.chat.completions.create({
+      model: ai.model,
       messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
       max_tokens: 200,
       temperature: 0.7,
