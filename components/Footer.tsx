@@ -24,7 +24,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm leading-relaxed" style={{ color: "#FAF0CA", opacity: 0.55 }}>
-              Galletas artesanales hechas con amor en Monterrey, México.
+              Galletas hechas con amor en Monterrey, México.
             </p>
 
             {/* Social icons */}

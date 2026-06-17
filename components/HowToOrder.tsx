@@ -26,7 +26,7 @@ const STEPS: Step[] = [
     num: "01",
     icon: IconCookie,
     title: "Elige tu galleta",
-    body: "Explora nuestro menú de 6 sabores artesanales. ¿No puedes decidir? Pide más de uno.",
+    body: "Explora nuestro menú de 6 sabores únicos. ¿No puedes decidir? Pide más de uno.",
   },
   {
     num: "02",

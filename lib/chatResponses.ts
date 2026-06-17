@@ -56,7 +56,7 @@ export function getHardcodedReply(input: string): string | null {
   return null;
 }
 
-export const SYSTEM_PROMPT = `Eres Crukies, el asistente virtual de una marca de galletas artesanales en Monterrey, México. Tu nombre es Crukies. Eres amigable, warm y conciso.
+export const SYSTEM_PROMPT = `Eres Crukies, el asistente virtual de una marca de galletas premium en Monterrey, México. Tu nombre es Crukies. Eres amigable, warm y conciso.
 
 MENÚ (6 sabores):
 1. Chispas de chocolate — la clásica, fan favorite

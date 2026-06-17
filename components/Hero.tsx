@@ -77,7 +77,7 @@ export default function Hero() {
           className="text-base sm:text-lg font-light uppercase tracking-[0.22em] mb-5"
           style={{ color: "#6DAEDB" }}
         >
-          Galletas Artesanales
+          Galletas Premium
         </p>
 
         <p
@@ -85,7 +85,7 @@ export default function Hero() {
           className="text-base sm:text-lg max-w-xl leading-relaxed mb-10"
           style={{ color: "#FAF0CA", opacity: 0.82 }}
         >
-          Artesanales, irresistibles. Hechas con ingredientes premium y un
+          Únicas, irresistibles. Hechas con ingredientes premium y un
           toque casero que se nota en cada mordida.
         </p>
 

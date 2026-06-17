@@ -13,11 +13,11 @@ const momoTrust = Momo_Trust_Display({
 
 
 export const metadata: Metadata = {
-  title: "Crukies — Galletas Artesanales en Monterrey",
+  title: "Crukies — Galletas Premium en Monterrey",
   description:
-    "Galletas artesanales hechas con ingredientes premium. Grandes, suaves por dentro y crujientes por fuera. Chispas de chocolate, Nutella, Oreo, Biscoff, Peanut Butter y Kinder.",
+    "Galletas hechas con ingredientes premium. Grandes, suaves por dentro y crujientes por fuera. Chispas de chocolate, Nutella, Oreo, Biscoff, Peanut Butter y Kinder.",
   openGraph: {
-    title: "Crukies — Galletas Artesanales",
+    title: "Crukies — Galletas Premium",
     description: "Galletas estilo New York, horneadas diariamente en Monterrey.",
     url: "https://crukie.mx",
     siteName: "Crukies",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Crukies — Galletas Artesanales",
+    title: "Crukies — Galletas Premium",
     description: "Galletas estilo New York, horneadas diariamente en Monterrey.",
     images: ["/og-image.png"],
   },

@@ -91,7 +91,7 @@ export default function MenuGrid() {
               className="text-base max-w-sm mx-auto leading-relaxed"
               style={{ color: "#494331", opacity: 0.65 }}
             >
-              6 sabores artesanales. Haz click en cualquier galleta para conocerla.
+              6 sabores únicos. Haz click en cualquier galleta para conocerla.
             </p>
             <div
               className="mx-auto mt-5 rounded-full"
