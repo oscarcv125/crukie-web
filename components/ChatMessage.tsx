@@ -1,6 +1,22 @@
+import { Fragment } from "react";
+
 interface ChatMessageProps {
   role: "user" | "assistant";
   content: string;
+}
+
+function renderInline(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={i} className="font-semibold">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return <Fragment key={i}>{part}</Fragment>;
+  });
 }
 
 export default function ChatMessage({ role, content }: ChatMessageProps) {
@@ -16,7 +32,7 @@ export default function ChatMessage({ role, content }: ChatMessageProps) {
             : { backgroundColor: "#6DAEDB", color: "#011638" }
         }
       >
-        {content}
+        {renderInline(content)}
       </div>
     </div>
   );
