@@ -77,7 +77,7 @@ export default function Hero() {
           className="text-base sm:text-lg font-light uppercase tracking-[0.22em] mb-5"
           style={{ color: "#6DAEDB" }}
         >
-          Galletas Premium
+          Galletas Chunky
         </p>
 
         <p
