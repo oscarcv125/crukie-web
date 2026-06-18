@@ -23,7 +23,7 @@ export const cookies: Cookie[] = [
     tags: ["clásica", "fan favorite"],
     imageUrl: "/images/chispas-chocolate-v2.png",
     isAvailable: true,
-    price: 30,
+    price: 25,
   },
   {
     id: 2,
@@ -62,7 +62,7 @@ export const cookies: Cookie[] = [
     tags: ["speculoos", "caramelizado"],
     imageUrl: "/images/biscoff-v2.png",
     isAvailable: true,
-    price: 30,
+    price: 35,
   },
   {
     id: 5,
@@ -75,7 +75,7 @@ export const cookies: Cookie[] = [
     tags: ["cacahuate", "sin chocolate"],
     imageUrl: "/images/peanut-butter-v2.png",
     isAvailable: true,
-    price: 30,
+    price: 25,
   },
   {
     id: 6,
