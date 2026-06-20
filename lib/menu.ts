@@ -90,6 +90,19 @@ export const cookies: Cookie[] = [
     isAvailable: true,
     price: 30,
   },
+  {
+    id: 7,
+    slug: "avena",
+    name: "Galleta de Avena",
+    description: "Una mezcla perfecta de texturas con arándanos y nueces.",
+    longDescription:
+      "Una galleta rústica y nutritiva elaborada con avena horneada, arándanos dulces, nueces crujientes y almendras. Su textura es suave por dentro con un toque crocante en los bordes. El equilibrio perfecto para acompañar tu café o disfrutar de un antojo con ingredientes naturales.",
+    ingredients: ["avena", "arándanos", "nuez", "almendras"],
+    tags: ["avena", "frutos secos", "rústica"],
+    imageUrl: "/images/avena-v2.png",
+    isAvailable: true,
+    price: 20,
+  },
 ];
 
 export const COOKIE_VISUALS: Record<number, { bg: string }> = {
@@ -99,4 +112,5 @@ export const COOKIE_VISUALS: Record<number, { bg: string }> = {
   4: { bg: "linear-gradient(135deg,#C07820,#6B3A00)" },
   5: { bg: "linear-gradient(135deg,#A67C52,#6B4226)" },
   6: { bg: "linear-gradient(135deg,#7B3F1A,#3D1A06)" },
+  7: { bg: "linear-gradient(135deg,#C19A6B,#8B5A2B)" },
 };

@@ -15,7 +15,7 @@ const momoTrust = Momo_Trust_Display({
 export const metadata: Metadata = {
   title: "Crukies — Galletas Premium en Monterrey",
   description:
-    "Galletas hechas con ingredientes premium. Grandes, suaves por dentro y crujientes por fuera. Chispas de chocolate, Nutella, Oreo, Biscoff, Peanut Butter y Kinder.",
+    "Galletas hechas con ingredientes premium. Grandes, suaves por dentro y crujientes por fuera. Chispas de chocolate, Nutella, Oreo, Biscoff, Peanut Butter, Kinder y Avena.",
   openGraph: {
     title: "Crukies — Galletas Premium",
     description: "Galletas estilo New York, horneadas diariamente en Monterrey.",

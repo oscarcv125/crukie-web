@@ -7,7 +7,7 @@ export const HARDCODED_RESPONSES: { keywords: string[]; reply: string }[] = [
   {
     keywords: ["menu", "menú", "sabores", "galletas", "tienen", "qué hay", "que hay"],
     reply:
-      "Nuestro menú tiene 6 sabores:\n1. Chispas de Chocolate 🍫\n2. Nutella 🌰\n3. Oreo 🖤\n4. Biscoff 🧡\n5. Peanut Butter 🥜\n6. Kinder 🍬\n\n¿Cuál te llama más la atención?",
+      "Nuestro menú tiene 7 sabores:\n1. Chispas de Chocolate 🍫\n2. Nutella 🌰\n3. Oreo 🖤\n4. Biscoff 🧡\n5. Peanut Butter 🥜\n6. Kinder 🍬\n7. Galleta de Avena 🌾\n\n¿Cuál te llama más la atención?",
   },
   {
     keywords: ["precio", "cuánto", "cuanto", "costo", "vale", "cuesta"],
@@ -58,13 +58,14 @@ export function getHardcodedReply(input: string): string | null {
 
 export const SYSTEM_PROMPT = `Eres Crukies, el asistente virtual de una marca de galletas premium en Monterrey, México. Tu nombre es Crukies. Eres amigable, warm y conciso.
 
-MENÚ (6 sabores):
+MENÚ (7 sabores):
 1. Chispas de chocolate — la clásica, fan favorite
 2. Nutella — relleno de Nutella al centro
 3. Oreo — chispas de chocolate + galleta Oreo
 4. Biscoff — chispas de chocolate + crema Biscoff
 5. Peanut Butter — para los amantes del cacahuate
 6. Kinder — chispas de chocolate + chocolate Kinder
+7. Galleta de Avena — avena, arándanos, nuez y almendras
 
 PEDIDOS: 12+ galletas requieren mínimo 72 hrs anticipación. 50% anticipo al confirmar. Contacto: Instagram o WhatsApp. Urgentes (24–48 hrs): 30% cargo extra.
 
