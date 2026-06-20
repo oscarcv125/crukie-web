@@ -115,7 +115,7 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
             className="text-sm font-bold shrink-0 mt-0.5"
             style={{ color: "#003049", fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
           >
-            $30
+            ${cookie.price}
           </span>
         </div>
         <p className="text-sm mb-3 leading-snug" style={{ color: "#494331", opacity: 0.72 }}>
