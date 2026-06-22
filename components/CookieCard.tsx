@@ -56,127 +56,111 @@ export default function CookieCard({ cookie, isSelected, onSelect }: CookieCardP
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="cookie-card w-full text-left rounded-2xl overflow-hidden cursor-pointer group"
+      className="cookie-card relative w-full rounded-3xl overflow-hidden cursor-pointer group flex flex-col h-[400px]"
       style={{
-        border: isSelected ? "2px solid #6DAEDB" : "2px solid transparent",
-        backgroundColor: "#fff",
+        background: visual.bg,
+        border: isSelected ? "2px solid #FAF0CA" : "2px solid transparent",
         boxShadow: isSelected
-          ? "0 0 0 4px rgba(109,174,219,0.22), 0 12px 36px rgba(0,48,73,0.18)"
-          : "0 2px 16px rgba(73,67,49,0.09)",
-        transition: "border-color 0.25s ease, box-shadow 0.25s ease",
-        willChange: "transform",
+          ? "0 0 0 4px rgba(250,240,202,0.3), 0 16px 32px rgba(0,0,0,0.3)"
+          : "0 8px 24px rgba(0,0,0,0.15)",
+        transition: "border-color 0.3s ease, box-shadow 0.3s ease",
         transformStyle: "preserve-3d",
+        willChange: "transform",
       }}
       aria-pressed={isSelected}
       aria-label={`Ver detalles de ${cookie.name}`}
     >
-      {/* Image */}
-      <div className="relative overflow-hidden" style={{ height: "200px" }}>
-        {!imgError && cookie.imageUrl ? (
-          <Image
-            src={cookie.imageUrl}
-            alt={cookie.name}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-108"
-            onError={() => setImgError(true)}
-          />
-        ) : (
-          <div
-            className="absolute inset-0 flex items-center justify-center text-7xl"
-            style={{ background: visual.bg }}
-          >
-            <IconCookie size={24} stroke={1.5} style={{ color: "#FAF0CA" }} />
-          </div>
-        )}
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-          style={{ backgroundColor: "rgba(0,48,73,0.45)" }}
-        >
-          <span
-            className="text-sm font-semibold px-5 py-2 rounded-full"
-            style={{ backgroundColor: "#6DAEDB", color: "#011638" }}
-          >
-            Ver detalles
-          </span>
-        </div>
-      </div>
-
-      {/* Card body */}
-      <div className="p-5">
-        <div className="flex items-start justify-between mb-1 gap-2">
+      {/* Top text content */}
+      <div className="p-6 relative z-10 pointer-events-none">
+        <div className="flex items-start justify-between mb-2 gap-2">
           <h3
-            className="text-xl font-bold"
-            style={{ fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em", color: "#003049" }}
+            className="text-2xl font-bold leading-tight"
+            style={{ fontFamily: "Garet, sans-serif", fontWeight: 850, letterSpacing: "-0.048em", color: "#FAF0CA" }}
           >
             {cookie.name}
           </h3>
           <span
-            className="text-sm font-bold shrink-0 mt-0.5"
-            style={{ color: "#003049", fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
+            className="text-base font-bold shrink-0 bg-black/20 px-3 py-1 rounded-full"
+            style={{ color: "#FAF0CA", fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif" }}
           >
             ${cookie.price}
           </span>
         </div>
-        <p className="text-sm mb-3 leading-snug" style={{ color: "#494331", opacity: 0.72 }}>
+        <p className="text-sm leading-snug line-clamp-3" style={{ color: "#FAF0CA", opacity: 0.85 }}>
           {cookie.description}
         </p>
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {cookie.tags.slice(0, 2).map((tag) => (
-            <span
-              key={tag}
-              className="text-xs px-2.5 py-0.5 rounded-full font-medium"
-              style={{ backgroundColor: "#6DAEDB", color: "#011638" }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Order stepper — stopPropagation so it doesn't open the detail */}
-        <div
-          onClick={(e) => e.stopPropagation()}
-          onKeyDown={(e) => e.stopPropagation()}
-        >
-          {qty === 0 ? (
-            <button
-              onClick={() => addItem(cookie.id, cookie.name, cookie.price)}
-              className="w-full flex items-center justify-center gap-1.5 rounded-full py-2 text-sm font-semibold cursor-pointer transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
-              style={{
-                backgroundColor: "rgba(0,48,73,0.07)",
-                color: "#003049",
-                border: "1.5px solid rgba(0,48,73,0.14)",
-                fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
-              }}
-            >
-              <span className="text-base leading-none">+</span>
-              Agregar al pedido
-            </button>
-          ) : (
-            <div className="flex items-center justify-between rounded-full px-1 py-1"
-              style={{ backgroundColor: "rgba(0,48,73,0.07)", border: "1.5px solid rgba(109,174,219,0.3)" }}
-            >
-              <button
-                onClick={() => setQuantity(cookie.id, qty - 1)}
-                className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm cursor-pointer transition-all duration-150 hover:scale-110"
-                style={{ backgroundColor: "rgba(0,48,73,0.1)", color: "#003049" }}
-              >
-                −
-              </button>
-              <span className="text-sm font-bold" style={{ color: "#003049" }}>
-                {qty} en pedido
-              </span>
-              <button
-                onClick={() => setQuantity(cookie.id, qty + 1)}
-                className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm cursor-pointer transition-all duration-150 hover:scale-110"
-                style={{ backgroundColor: "#003049", color: "#FAF0CA" }}
-              >
-                +
-              </button>
-            </div>
-          )}
-        </div>
       </div>
+
+      {/* Full cookie at the bottom */}
+      <div className="absolute bottom-0 left-0 w-full h-[65%] pointer-events-none flex items-end justify-center">
+        {!imgError && cookie.imageUrl ? (
+          <div className="relative w-[90%] aspect-square transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] translate-y-[15%] group-hover:scale-[1.8] group-hover:translate-y-[45%]">
+            <Image
+              src={cookie.imageUrl}
+              alt={cookie.name}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-contain drop-shadow-2xl"
+              onError={() => setImgError(true)}
+            />
+          </div>
+        ) : (
+          <div className="flex items-center justify-center w-full h-full pb-10">
+            <IconCookie size={80} stroke={1.5} style={{ color: "#FAF0CA", opacity: 0.5 }} />
+          </div>
+        )}
+      </div>
+
+      {/* Center overlay "Ver detalles" */}
+      <div className="absolute top-[40%] -translate-y-1/2 left-0 right-0 px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex justify-center">
+         <span
+            className="text-sm font-semibold px-5 py-2 rounded-full shadow-lg"
+            style={{ backgroundColor: "#FAF0CA", color: "#011638" }}
+          >
+            Ver detalles
+          </span>
+      </div>
+
+      {/* Order stepper overlay */}
+      <div className="absolute bottom-5 left-6 right-6 z-20" onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()}>
+        {qty === 0 ? (
+          <button
+            onClick={() => addItem(cookie.id, cookie.name, cookie.price)}
+            className="w-full flex items-center justify-center gap-1.5 rounded-full py-2.5 text-sm font-bold cursor-pointer transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-xl backdrop-blur-md"
+            style={{
+              backgroundColor: "rgba(250,240,202,0.95)",
+              color: "#011638",
+              fontFamily: "var(--font-momo), 'Momo Trust Display', sans-serif",
+            }}
+          >
+            <span className="text-base leading-none">+</span>
+            Agregar
+          </button>
+        ) : (
+          <div className="flex items-center justify-between rounded-full px-2 py-1.5 shadow-xl backdrop-blur-md"
+            style={{ backgroundColor: "rgba(250,240,202,0.95)" }}
+          >
+            <button
+              onClick={() => setQuantity(cookie.id, qty - 1)}
+              className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-base cursor-pointer transition-all duration-150 hover:bg-black/10"
+              style={{ color: "#011638" }}
+            >
+              −
+            </button>
+            <span className="text-sm font-bold" style={{ color: "#011638" }}>
+              {qty}
+            </span>
+            <button
+              onClick={() => setQuantity(cookie.id, qty + 1)}
+              className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-base cursor-pointer transition-all duration-150 hover:bg-black/10"
+              style={{ color: "#011638" }}
+            >
+              +
+            </button>
+          </div>
+        )}
+      </div>
+
     </div>
   );
 }

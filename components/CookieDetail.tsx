@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { animate, createTimeline } from "animejs";
+import { animate } from "animejs";
 import { Cookie, COOKIE_VISUALS } from "@/lib/menu";
 import { useOrder } from "@/lib/order-context";
 import { InstagramIcon } from "./Icons";
@@ -56,14 +56,13 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
         ease: "outBack(1.1)",
       });
 
-    // Morph cookie from flat top-down → angled perspective
+    // Gentle float in for the image without 3D morph
     if (imgWrap) {
       animate(imgWrap, {
-        rotateX: [0, -22],
-        rotateY: [0, 7],
-        translateY: [0, -16],
-        duration: 950,
-        delay: 400,
+        translateY: [20, 0],
+        scale: [0.95, 1],
+        duration: 800,
+        delay: 300,
         ease: "outExpo",
       });
     }
@@ -71,22 +70,21 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
     return () => { document.body.style.overflow = ""; };
   }, []);
 
-  // Re-morph when switching cookies without closing
+  // Re-animate when switching cookies without closing
   useEffect(() => {
     const imgWrap = imgWrapRef.current;
     if (!imgWrap) return;
-    // Reset to flat then re-angle
-    animate(imgWrap, { rotateX: 0, rotateY: 0, translateY: 0, duration: 180, ease: "outQuart" });
+    
+    animate(imgWrap, { scale: 0.95, translateY: 10, duration: 150, ease: "outQuart" });
     setTimeout(() => {
       if (!imgWrap) return;
       animate(imgWrap, {
-        rotateX: [0, -22],
-        rotateY: [0, 7],
-        translateY: [0, -16],
-        duration: 800,
+        scale: [0.95, 1],
+        translateY: [10, 0],
+        duration: 700,
         ease: "outExpo",
       });
-    }, 200);
+    }, 180);
   }, [cookie.id]);
 
   // ESC to close
@@ -125,10 +123,10 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
         </button>
 
         <div className="flex flex-col md:flex-row min-h-[70vh] md:min-h-[65vh]">
-          {/* ── Left: image with 3D tilt ── */}
+          {/* ── Left: image ── */}
           <div
             className="relative w-full md:w-1/2 flex items-center justify-center overflow-hidden"
-            style={{ minHeight: "320px", perspective: "900px" }}
+            style={{ minHeight: "320px" }}
           >
             {/* gradient backdrop always visible */}
             <div className="absolute inset-0" style={{ background: visual.bg, opacity: 0.7 }} />
@@ -137,9 +135,9 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
               ref={imgWrapRef}
               className="relative z-10"
               style={{
-                width: "72%",
-                maxWidth: "320px",
-                transformOrigin: "center bottom",
+                width: "90%",
+                maxWidth: "460px",
+                transformOrigin: "center center",
                 willChange: "transform",
               }}
             >
@@ -147,8 +145,8 @@ export default function CookieDetail({ cookie, onClose }: CookieDetailProps) {
                 <Image
                   src={cookie.imageUrl}
                   alt={cookie.name}
-                  width={500}
-                  height={500}
+                  width={600}
+                  height={600}
                   className="w-full h-auto"
                   style={{
                     borderRadius: "20px",

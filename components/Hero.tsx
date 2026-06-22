@@ -44,18 +44,19 @@ export default function Hero() {
         paddingBottom: "150px",
       }}
     >
+      <WaveCanvas />
+
       <div
         className="relative flex flex-col items-center text-center max-w-3xl mx-auto pt-20"
-        style={{ zIndex: 10 }}
       >
-        <div ref={logoRef} className="mb-6">
-          <Image
-            src="/logo-beige.svg"
-            alt="Crukies Logo"
-            width={200}
-            height={200}
-            className="mx-auto drop-shadow-xl"
-            priority
+        <div ref={logoRef} className="mb-6 flex justify-center" style={{ mixBlendMode: "screen" }}>
+          <video
+            src="/cookie-video.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="mx-auto w-[240px] h-[240px] md:w-[280px] md:h-[280px] object-cover"
           />
         </div>
 
@@ -105,8 +106,6 @@ export default function Hero() {
           Ver el Menú
         </a>
       </div>
-
-      <WaveCanvas />
     </section>
   );
 }
